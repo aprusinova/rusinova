@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Тест для руководителей онлайн-проектов: 13 рабочих ситуаций, 4 типа руководителя и сколько дней проект продержится в воздухе без вас.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Вы узкое горлышко своего проекта?">
+<meta property="og:description" content="Ваш проект — самолёт, команда — экипаж. Узнайте, какой вы пилот и сколько дней проект продержится без вас. 4 минуты.">
+<meta name="theme-color" content="#0E1014">
+<title>Тест: вы узкое горлышко своего проекта?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: one narrow column on a night-airfield ground; the opener is a departure board, the result is a boarding pass. Dark by design, single look. */
+:root{
+  --night:#0E1014;      /* ground */
+  --panel:#16191F;      /* board / cards */
+  --line:#262A33;       /* hairlines */
+  --ink:#E9EAEE;        /* main text */
+  --muted:#8C92A0;      /* secondary text */
+  --amber:#F0B341;      /* departure-board amber, the one accent */
+  --amber-dim:#6B5326;
+  --red:#E8644F;        /* "delayed" status */
+  --green:#7FC79A;      /* "on time" status */
+  --f-display:"Oswald","Arial Narrow",Impact,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+html{background:var(--night)}
+body{background:var(--night);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px;
+  background-image:radial-gradient(1200px 500px at 50% -200px,#1c2230 0%,transparent 70%);background-repeat:no-repeat}
+*{box-sizing:border-box}
+.wrap{max-width:680px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:20px 8px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.top b{color:var(--ink);font-weight:600}
+.top .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--amber);margin-right:8px;vertical-align:1px;box-shadow:0 0 10px var(--amber)}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;text-transform:uppercase;letter-spacing:.01em;text-wrap:balance;margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+p{margin:0}
+.muted{color:var(--muted)}
+
+/* departure board */
+.board{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:14px;margin-block:20px 28px;overflow-x:auto}
+.board-head,.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}
+.board-head{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.row{padding-block:9px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.flap{font-family:var(--f-mono);font-weight:600;font-size:14px;letter-spacing:.06em;color:var(--amber);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.status{font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px;white-space:nowrap}
+.s-red{color:var(--red);background:rgba(232,100,79,.12)}
+.s-amber{color:var(--amber);background:rgba(240,179,65,.12)}
+
+.hero h1{font-size:clamp(40px,9vw,72px);line-height:.98;margin-block:10px 18px}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.lead{font-size:18px;max-width:34em}
+.for{font-size:14px;color:var(--muted);margin-top:10px}
+.types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.types-h{grid-column:1/-1;margin-bottom:2px}
+.type{display:grid;grid-template-columns:30px minmax(0,1fr);gap:10px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:6px;font-size:14px;line-height:1.4}
+.type b{font-weight:600}
+.tcode{font-family:var(--f-display);font-size:22px;line-height:1;color:var(--amber)}
+@media (max-width:520px){.types{grid-template-columns:minmax(0,1fr)}}
+.cta-row{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:26px}
+.note{font-size:13px;color:var(--muted)}
+
+.btn{appearance:none;border:0;cursor:pointer;font-family:var(--f-display);font-size:18px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--amber);color:#16120A;padding:15px 26px;border-radius:4px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .15s,background .15s}
+.btn:hover{background:#FFC55A}
+.btn:active{transform:translateY(1px)}
+.btn:focus-visible,.opt:focus-visible,.ghost:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+.ghost{appearance:none;background:none;border:0;color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;padding:8px 0}
+.ghost:hover{color:var(--ink)}
+
+.byline{display:flex;gap:14px;align-items:flex-start;margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+.byline .avatar{flex:0 0 40px;height:40px;border-radius:50%;border:1px solid var(--amber-dim);display:grid;place-items:center;font-family:var(--f-display);color:var(--amber);font-size:16px}
+.byline b{color:var(--ink);font-weight:600}
+
+/* quiz */
+.progress{margin-block:18px 26px}
+.progress .meta{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.track{position:relative;height:2px;background:var(--line)}
+.track .fill{position:absolute;inset:0 auto 0 0;background:var(--amber);transition:width .35s ease}
+.track .plane{position:absolute;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;transition:left .35s ease}
+.aside{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;color:var(--amber);margin-bottom:14px}
+.q h2{font-size:clamp(26px,5.6vw,36px);line-height:1.1;margin-bottom:22px}
+.opts{display:grid;gap:10px}
+.opt{appearance:none;text-align:left;width:100%;cursor:pointer;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;
+  padding:16px 18px;font-family:var(--f-body);font-size:16px;line-height:1.45;display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;align-items:start;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--amber-dim);background:#1A1E25}
+.opt .mark{width:18px;height:18px;margin-top:2px;border:1.5px solid var(--muted);border-radius:50%}
+.opt[aria-pressed="true"]{border-color:var(--amber);background:#1E1A12}
+.opt[aria-pressed="true"] .mark{border-color:var(--amber);background:radial-gradient(circle,var(--amber) 0 45%,transparent 50%)}
+.qnav{display:flex;justify-content:space-between;align-items:center;margin-top:18px;min-height:34px}
+
+.loading{padding-block:80px;text-align:center}
+.loading .flap{font-size:16px;display:block;margin-top:16px;white-space:normal}
+
+/* result: boarding pass */
+.pass{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.pass-top{padding:22px 22px 18px;border-bottom:1px dashed #3a3f4a;position:relative}
+.pass-top::before,.pass-top::after{content:"";position:absolute;bottom:-11px;width:22px;height:22px;border-radius:50%;background:var(--night);border:1px solid var(--line)}
+.pass-top::before{left:-12px}.pass-top::after{right:-12px}
+.pass-head{display:flex;justify-content:space-between;gap:12px;font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pass h1{font-size:clamp(30px,7vw,46px);line-height:1.02;margin-block:14px 6px;color:var(--ink)}
+.pass .code{font-family:var(--f-mono);font-size:13px;color:var(--amber);letter-spacing:.08em}
+.pass-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:18px 22px 22px}
+.cell .k{font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cell .v{font-family:var(--f-display);font-size:22px;text-transform:uppercase;margin-top:4px;line-height:1.1}
+.cell.big{grid-column:1/-1}
+.cell.big .v{font-size:clamp(34px,8vw,52px);color:var(--amber)}
+@media (max-width:460px){.pass-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+.section{margin-top:34px}
+.section h3{font-size:22px;margin-bottom:12px}
+.story{font-size:18px;line-height:1.6}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.checks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px}
+.checks li::before{content:"";width:14px;height:14px;margin-top:5px;border:1.5px solid var(--amber);border-radius:2px;background:linear-gradient(var(--amber),var(--amber)) center/6px 6px no-repeat}
+.pairs{display:grid;gap:18px}
+.pair .k{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:4px}
+.step{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:6px;padding:18px 20px}
+.step p+p{margin-top:10px}
+
+.offer{margin-top:44px;border:1px solid var(--amber-dim);border-radius:10px;padding:26px 22px;background:linear-gradient(180deg,#1A1710 0%,var(--panel) 60%)}
+.offer h2{font-size:clamp(28px,6vw,40px);line-height:1.05;margin-block:10px 14px}
+.offer .facts{display:flex;flex-wrap:wrap;gap:8px;margin-block:18px}
+.chip{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);border-radius:3px;padding:6px 10px;color:var(--ink)}
+.chip.price{border-color:var(--amber);color:var(--amber)}
+.offer ul{margin:0;padding-left:18px;display:grid;gap:8px}
+.msg{margin-top:20px;font-size:14px;color:var(--muted)}
+.msg-box{margin-top:8px;background:var(--night);border:1px solid var(--line);border-radius:4px;padding:12px 14px;font-family:var(--f-mono);font-size:13px;color:var(--ink);user-select:all;white-space:pre-wrap;word-break:break-word}
+.copy{margin-top:8px}
+.restart{margin-top:34px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:13px;color:var(--muted)}
+
+.fade{animation:in .35s ease both}
+@keyframes in{from{opacity:.0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none}.track .fill,.track .plane{transition:none}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <span><span class="dot" aria-hidden="true"></span><b>Анастасия Русинова</b></span>
+    <span>Диспетчерская проекта</span>
+  </header>
+  <main id="app" aria-live="polite"></main>
+</div>
+
+<script>
+(function(){
+"use strict";
+var TG_USERNAME = "Nastya_ruva";
+var TG_URL = "https://t.me/" + TG_USERNAME;
+var STORE_KEY = "bottleneck-test-v1";
+
+var QUESTIONS = [
+ {q:"Понедельник, 9:40. В рабочем чате 37 непрочитанных. Первая мысль:", o:[
+  "Сейчас всё разберу лично, так быстрее",
+  "Пролистываю: половина — «а можно?..», и все ждут меня",
+  "Смотрю только то, где меня отметили, остальное решат без меня",
+  "Открою после планёрки: срочное идёт через дежурного"]},
+ {q:"Пришли тёплые заявки, а менеджер по продажам заболел. Что дальше?", o:[
+  "Звоню и закрываю лично, по вечерам",
+  "Команда отвечает, но каждый спорный случай несут мне: «а какую скидку дать?»",
+  "Отвечают по скрипту, но самых горячих клиентов я забираю себе",
+  "Есть порядок замены и правила по скидкам, заявки не простаивают"]},
+ {q:"Нужен новый человек в команду. Как выглядит найм?", o:[
+  "Собеседую всех лично и решаю по ощущению «нравится — не нравится»",
+  "Отклики разбирает помощник, но все собеседования — только через меня, вакансия висит неделями",
+  "Есть анкета и тестовое, а финальное решение — на чуйку",
+  "Анкета-фильтр, тестовое задание, понятная схема оплаты; я подключаюсь только на финал"]},
+ {q:"Реклама перестала приносить заявки. Что происходит?", o:[
+  "Замечаю это первой и лично переделываю креативы и тексты",
+  "Маркетолог или подрядчик ждёт моего решения по каждому креативу и бюджету",
+  "Маркетолог перезапускает сам, но новые идеи и деньги каждый раз согласует со мной",
+  "Есть цифры и пороги: маркетолог сам меняет связки в рамках бюджета, мне приходит отчёт"]},
+ {q:"Отпуск. Честно:", o:[
+  "Какой отпуск? Последний был… не помню",
+  "Еду, но ноутбук со мной, а чат проверяю каждые пару часов",
+  "Отдыхаю, но пару раз в день созваниваюсь «на всякий случай»",
+  "Назначаю дежурного и проверяю раз в пару дней. Или вообще не проверяю"]},
+ {q:"Сотрудник пришёл с проблемой. Обычно вы:", o:[
+  "Забираете задачу и делаете лично",
+  "Подробно объясняете, как сделать, а потом проверяете",
+  "Спрашиваете «а ты что предлагаешь?», но в итоге часто решаете за него",
+  "Он приходит уже с вариантами, вы выбираете или он решает сам"]},
+ {q:"Где живут ваши процессы: работа с клиентом, запуск, ввод новичка в дела?", o:[
+  "В моей голове",
+  "В голове и в переписках, которые я пересылаю, когда спрашивают",
+  "Часть описана, часть — «спроси у меня»",
+  "В регламентах: новичок входит по ним за пару недель"]},
+ {q:"Вы пропали на 7 дней без связи. Что с проектом?", o:[
+  "Два дня продержится, потом всё встанет",
+  "Работает, но копится гора решений, которые ждут меня",
+  "Справятся, но продажи просядут",
+  "Не заметят. Ну, может, кто-то соскучится"]},
+ {q:"Как устроена оплата ключевых людей: продажника, менеджера проектов, маркетолога?", o:[
+  "Фикс «как договорились», без KPI",
+  "С каждым договариваюсь отдельно, каждая премия — моё ручное решение",
+  "Фикс + %, но считаю вручную в конце месяца, и не всегда понятно, за что",
+  "Понятная схема фикс + KPI: человек сам видит, сколько заработает"]},
+ {q:"Через два дня сдача: запуск, работа клиенту, большой проект. Команда прислала результат. Вы:", o:[
+  "Переделываете всё лично",
+  "Правите каждую запятую, три круга правок",
+  "Смотрите ключевое, мелочи отпускаете",
+  "Проверяет ответственный по чек-листу, вы смотрите итог"]},
+ {q:"Пятница, 22:30. Что происходит?", o:[
+  "Доделываю то, что не успел(а) днём",
+  "Отвечаю в чате: без меня не могут согласовать",
+  "Ещё раз смотрю отчёты, чтобы спать спокойно",
+  "Телефон на беззвучном, рабочий чат замьючен до понедельника"]},
+ {q:"Команда предлагает: «А давай попробуем по-другому?» Вы:", o:[
+  "«Нет, давайте как я сказал(а)» — проверено же",
+  "«Пришлите подробно, я подумаю» — и идея застревает у вас на две недели",
+  "Разрешаете, но контролируете каждый шаг",
+  "Даёте рамки и срок, потом смотрите на результат"]},
+ {q:"Откуда сейчас приходят деньги проекта?", o:[
+  "В основном из моих личных продаж, созвонов и знакомств",
+  "Команда продаёт, но крупных клиентов и сделки закрываю только я",
+  "Продажи работают, но держатся на одном сильном человеке",
+  "Продажи идут по системе: заявки, скрипты, план, отчёт"]}
+];
+
+var SEGMENTS = [
+ {id:"kind", q:"Чем вы руководите?", o:["Онлайн-школа или экспертный проект","Агентство, студия, продакшен","Продюсирование, запуски","Другой онлайн-бизнес"]},
+ {id:"team", q:"Сколько человек в команде, вместе с подрядчиками?", o:["Только я и ассистент","2–5","6–15","Больше 15"]},
+ {id:"sales", q:"Кто сейчас продаёт?", o:["Есть менеджер по продажам, и он справляется","Есть, но я им недоволен(льна)","Ищу человека или он вот-вот уйдёт","Продаю лично"]},
+ {id:"goal", q:"Что хотите отпустить из рук первым?", o:["Продажи: чтобы заявки закрывали без меня","Ежедневные вопросы команды","Проверку каждой мелочи","Хочу в отпуск без ноутбука"]}
+];
+
+var TYPES = {
+ A:{code:"A", name:"Пилот, который ещё и продаёт билеты", days:"2 дня", status:"Не взлетает без вас",
+  story:"Вы продаёте билеты, грузите багаж, разносите кофе и ещё успеваете вести самолёт. Он летит, пока вы ни на минуту не отпускаете штурвал. Давайте честно: это не проект, а очень дорогая самозанятость.",
+  checks:["«Быстрее сделать самому, чем объяснять».","Заявки и клиенты ждут, пока вы закончите всё остальное.","Отпуск — это когда вы работаете из другого города."],
+  pairs:[["Сколько это стоит","Каждая заявка, до которой вы не дошли сегодня, завтра стоит дороже: трафик дорожает, а лидов меньше. Вы теряете деньги не потому, что плохо продаёте, а потому, что вас одна штука."],
+         ["Ваша сильная сторона","Вы знаете каждый процесс изнутри. Это лучшая база, чтобы описать его и отдать."],
+         ["Что отпустить первым — продажи","Это единственная задача, которая сразу окупает человека. Не ассистент на всё, а один человек, который продаёт билеты, пока вы ведёте самолёт."]]},
+ B:{code:"B", name:"Единственная взлётная полоса", days:"5 дней", status:"Очередь на взлёт",
+  story:"Самолёты у вас есть, и экипажи толковые. Но взлетают все с одной полосы — через ваше «да». Пока вы не дали разрешение, борт стоит, а очередь на рулёжке растёт. Вы и есть узкое горлышко. Ирония в том, что команда не ленивая: она просто ждёт разрешения на взлёт.",
+  checks:["В чате десятки «а можно?..», и без вашего «да» ничего не двигается.","Сотрудники приносят проблемы, а не решения.","Скидки, крупные клиенты, бюджет на рекламу — только через вас."],
+  pairs:[["Сколько это стоит","Каждое «подожди, я посмотрю» — это заявка, которая остыла, реклама, которая крутится вхолостую, и сотрудник, который перестаёт думать сам. Вы платите команде, а работаете за неё."],
+         ["Ваша сильная сторона","Команда уже есть, и вы умеете держать качество. Нужно не нанимать заново, а перенести ваши критерии из головы в правила."],
+         ["Что отпустить первым — продажи","Решения о скидках и «горячих» клиентах проще всего превратить в правила: кому, сколько, когда. Так у вас появится вторая полоса."]]},
+ C:{code:"C", name:"Пилот, который не снимает руку со штурвала", days:"2 недели", status:"Летит, пока ясно",
+  story:"Автопилот у вас уже есть: часть процессов описана, команда летит сама. Пока погода ясная, всё спокойно. Но стоит попасть в турбулентность — заболел продажник, просел запуск, ушёл клиент, — вы отключаете автопилот и снова ведёте сами.",
+  checks:["Отпускаете, но перепроверяете отчёты «чтобы спать спокойно».","Продажи держатся на одном сильном человеке.","Оплата команды вроде есть, но считается вручную, и не всегда ясно, за что."],
+  pairs:[["Сколько это стоит","Система, которая работает только в штиль, — это ещё не система. Уход одного ключевого человека отбрасывает проект на полгода назад."],
+         ["Ваша сильная сторона","Вы уже прошли самое сложное: признали, что не должны делать всё лично."],
+         ["Что отпустить первым — зависимость продаж от одного человека","Понятный найм и схема оплаты «фикс + KPI» превращают одного сильного продажника в отдел, который переживёт его отпуск."]]},
+ D:{code:"D", name:"Командир с автопилотом", days:"Месяц +", status:"По расписанию",
+  story:"Самолёт идёт по маршруту, второй пилот на месте, а вы прокладываете новые направления. Таких руководителей меньшинство. И знаете что? Именно у вас сейчас лучшее окно для роста.",
+  checks:["Сотрудники приходят с вариантами решений.","Продажи и реклама идут по цифрам и отчётам, а не по вашему настроению.","Рабочий чат на выходных молчит."],
+  pairs:[["Где ваш риск","Система стареет быстрее, чем кажется. Новые роли, ИИ, дорожающий трафик — правила, написанные год назад, начинают тормозить."],
+         ["Что дальше","Не отпускать, а масштабировать: новый продукт или направление, второй отдел продаж, команда, которая растёт без вашего ручного найма."]]}
+};
+
+var FIRST_STEP = [
+ "Выпишите три решения, которые продажник или команда сейчас несут вам: скидка, рассрочка, «а можно позже». Для каждого напишите правило в одну строку. Это первые три страницы регламента продаж.",
+ "Неделю записывайте каждый вопрос, с которым к вам пришли. В пятницу разложите их на три колонки: «решают сами», «сообщают после», «согласуют до». Две трети уйдут в первую колонку.",
+ "Выберите одну задачу, которую правите чаще всего, и составьте к ней чек-лист из пяти пунктов. Дальше проверяет ответственный, вы смотрите только итог.",
+ "Назначьте дежурного и отправьте команде одно сообщение: что он решает сам, а по какому поводу звонить вам. Сделайте пробу на выходных до отпуска."
+];
+
+var TOTAL = QUESTIONS.length + SEGMENTS.length;
+
+function load(){ try{ var s = JSON.parse(localStorage.getItem(STORE_KEY)||"null"); if(s && s.v===1) return s; }catch(e){} return null; }
+function save(){ try{ localStorage.setItem(STORE_KEY, JSON.stringify(state)); }catch(e){} }
+function fresh(){
+  var orders = QUESTIONS.map(function(){ var a=[0,1,2,3]; for(var i=3;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t;} return a; });
+  return {v:1, screen:"intro", i:0, answers:[], seg:{}, orders:orders};
+}
+var state = load() || fresh();
+
+var app = document.getElementById("app");
+function el(tag, attrs, html){ var e=document.createElement(tag); if(attrs) for(var k in attrs){ if(k==="class") e.className=attrs[k]; else e.setAttribute(k,attrs[k]); } if(html!=null) e.innerHTML=html; return e; }
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+
+var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+var FLAP_CHARS = "АБВГДЕЖЗИКЛМНОПРСТУФХЦЧШЭЮЯ0123456789";
+function flap(node, text, delay){
+  if(reduce){ node.textContent=text; return; }
+  var frames=0, max=14+Math.floor(Math.random()*8);
+  setTimeout(function tick(){
+    frames++;
+    var out=""; for(var i=0;i<text.length;i++){ var ch=text[i]; out += (ch===" "||frames>=max-(text.length-i)/3) ? ch : FLAP_CHARS[Math.floor(Math.random()*FLAP_CHARS.length)]; }
+    node.textContent = frames>=max ? text : out;
+    if(frames<max) setTimeout(tick, 45);
+  }, delay||0);
+}
+
+function scoreType(){
+  var sum=0; for(var i=0;i<state.answers.length;i++) sum += state.answers[i];
+  if(sum<=9) return "A"; if(sum<=19) return "B"; if(sum<=29) return "C"; return "D";
+}
+
+function render(){
+  save();
+  app.innerHTML="";
+  window.scrollTo(0,0);
+  if(state.screen==="intro") return renderIntro();
+  if(state.screen==="quiz") return renderQuestion();
+  if(state.screen==="loading") return renderLoading();
+  if(state.screen==="result") return renderResult();
+}
+
+function renderIntro(){
+  var s = el("section",{class:"hero fade"});
+  var rows = [["Запуск нового продукта","Задержан","s-red"],["Бюджет на рекламу","Ждёт вашего «да»","s-amber"],["Найм продажника","Ждёт вас","s-amber"],["Ваш отпуск","Отменён","s-red"]];
+  var board = el("div",{class:"board",role:"img","aria-label":"Табло вылетов: запуск задержан, бюджет на рекламу ждёт вашего решения, найм ждёт вас, отпуск отменён"});
+  board.appendChild(el("div",{class:"board-head"},"<span>Рейс · ваш проект</span><span>Статус</span>"));
+  rows.forEach(function(r){
+    var row=el("div",{class:"row"});
+    var f=el("span",{class:"flap"}); f.textContent=r[0].toUpperCase();
+    row.appendChild(f); row.appendChild(el("span",{class:"status "+r[2]},esc(r[1])));
+    board.appendChild(row);
+  });
+  s.appendChild(el("p",{class:"eyebrow"},"Тест для руководителей онлайн-проектов"));
+  s.appendChild(el("h1",null,"Вы узкое горлышко <em>своего проекта?</em>"));
+  s.appendChild(el("p",{class:"lead"},"Ваш проект — самолёт, команда — экипаж. А вы кто: пилот, диспетчер или вся взлётная полоса сразу? Узнайте, какой вы пилот и сколько дней проект продержится в воздухе без вас."));
+  s.appendChild(el("p",{class:"for"},"13 рабочих ситуаций · 4 минуты · для онлайн-школ, экспертных проектов, агентств, студий и продюсерских команд."));
+  s.appendChild(board);
+  var types=el("div",{class:"types"});
+  types.appendChild(el("p",{class:"eyebrow types-h"},"4 типа руководителя · какой вы?"));
+  [["A","Пилот, который ещё и продаёт билеты","всё на вас"],["B","Единственная взлётная полоса","все ждут вашего «да»"],["C","Пилот, который не снимает руку со штурвала","автопилот есть, но в турбулентность — снова сами"],["D","Командир с автопилотом","проект летит по расписанию"]].forEach(function(t){
+    types.appendChild(el("div",{class:"type"},'<span class="tcode">'+t[0]+'</span><span><b>'+esc(t[1])+'</b><br><span class="muted">'+esc(t[2])+'</span></span>'));
+  });
+  s.appendChild(types);
+  var cta=el("div",{class:"cta-row"});
+  var started = state.answers.length>0;
+  var b=el("button",{class:"btn",type:"button",id:"start"}, started ? "Продолжить с вопроса "+(state.i+1) : "Узнать за 4 минуты");
+  b.addEventListener("click",function(){ state.screen="quiz"; render(); });
+  cta.appendChild(b);
+  if(started){ var r=el("button",{class:"ghost",type:"button"},"Начать заново"); r.addEventListener("click",function(){ state=fresh(); state.screen="quiz"; render(); }); cta.appendChild(r); }
+  else cta.appendChild(el("span",{class:"note"},"Без регистрации. Результат сразу на экране."));
+  s.appendChild(cta);
+  s.appendChild(el("div",{class:"byline"},'<span class="avatar" aria-hidden="true">АР</span><span><b>Анастасия Русинова</b><br>Операционный директор онлайн-проектов, экс-операционный директор Института Павла Ракова. Управляла командами от 3 до 40 человек.<br><span style="font-size:12px">Ответы остаются только в вашем браузере.</span></span>'));
+  app.appendChild(s);
+  var flaps = board.querySelectorAll(".flap");
+  for(var i=0;i<flaps.length;i++) flap(flaps[i], rows[i][0].toUpperCase(), 200+i*180);
+}
+
+function progressBar(n){
+  var pct = Math.round(n/TOTAL*100);
+  var w=el("div",{class:"progress"});
+  w.innerHTML='<div class="meta"><span>Вопрос '+(n+1)+' из '+TOTAL+'</span><span>'+(n<QUESTIONS.length?"Ситуации":"О проекте")+'</span></div>'+
+   '<div class="track" aria-hidden="true"><div class="fill" style="width:'+pct+'%"></div>'+
+   '<svg class="plane" style="left:'+pct+'%" viewBox="0 0 24 24"><path fill="#F0B341" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z" transform="rotate(90 12 12)"/></svg></div>';
+  return w;
+}
+
+function renderQuestion(){
+  var n = state.i, isSeg = n>=QUESTIONS.length;
+  var data = isSeg ? SEGMENTS[n-QUESTIONS.length] : QUESTIONS[n];
+  var s = el("section",{class:"q fade"});
+  s.appendChild(progressBar(n));
+  var aside = n===4 ? "Узнаёте себя? Ещё 9 ситуаций." : n===9 ? "Почти готово. Осталось четыре." : n===QUESTIONS.length ? "Последние вопросы — чтобы первый шаг был про ваш проект, а не «в целом»." : n===0 ? "Отвечайте не как надо, а как было на прошлой неделе." : "";
+  if(aside) s.appendChild(el("p",{class:"aside"},esc(aside)));
+  s.appendChild(el("h2",{id:"qtitle"},esc(data.q)));
+  var opts=el("div",{class:"opts",role:"group","aria-labelledby":"qtitle"});
+  var order = isSeg ? [0,1,2,3] : state.orders[n];
+  var current = isSeg ? state.seg[data.id] : state.answers[n];
+  order.forEach(function(idx){
+    var b=el("button",{class:"opt",type:"button","aria-pressed":String(current===idx)});
+    b.innerHTML='<span class="mark" aria-hidden="true"></span><span>'+esc(data.o[idx])+'</span>';
+    b.addEventListener("click",function(){
+      if(isSeg) state.seg[data.id]=idx; else state.answers[n]=idx;
+      b.setAttribute("aria-pressed","true");
+      setTimeout(function(){
+        if(state.i < TOTAL-1){ state.i++; render(); }
+        else { state.screen="loading"; render(); }
+      }, reduce?0:180);
+    });
+    opts.appendChild(b);
+  });
+  s.appendChild(opts);
+  var nav=el("div",{class:"qnav"});
+  var back=el("button",{class:"ghost",type:"button"},"← Назад");
+  back.addEventListener("click",function(){ if(state.i>0){ state.i--; } else { state.screen="intro"; } render(); });
+  nav.appendChild(back);
+  s.appendChild(nav);
+  app.appendChild(s);
+  var first = opts.querySelector(".opt"); if(first && document.activeElement && document.activeElement.tagName==="BUTTON") first.focus({preventScroll:true});
+}
+
+function renderLoading(){
+  var s=el("section",{class:"loading fade"});
+  s.appendChild(el("p",{class:"eyebrow"},"Диспетчерская"));
+  var f=el("span",{class:"flap"}); s.appendChild(f);
+  app.appendChild(s);
+  var text="СЧИТАЮ, СКОЛЬКО БОРТОВ ЖДУТ ВАШЕГО «ДА»…";
+  f.textContent=text; flap(f,text,0);
+  setTimeout(function(){ state.screen="result"; render(); }, reduce?300:1700);
+}
+
+function renderResult(){
+  var key = scoreType(), t = TYPES[key];
+  var s=el("section",{class:"fade"});
+  s.appendChild(el("p",{class:"eyebrow",style:"margin-top:18px"},"Ваш результат"));
+  var pass=el("article",{class:"pass","aria-label":"Посадочный талон с результатом"});
+  pass.innerHTML =
+   '<div class="pass-top"><div class="pass-head"><span>Посадочный талон</span><span>Класс '+t.code+'</span></div>'+
+   '<h1>'+esc(t.name)+'</h1><p class="code">Пассажир: руководитель проекта</p></div>'+
+   '<div class="pass-grid">'+
+     '<div class="cell big"><div class="k">Без вас проект продержится в воздухе</div><div class="v">'+esc(t.days)+'</div></div>'+
+     '<div class="cell"><div class="k">Статус</div><div class="v">'+esc(t.status)+'</div></div>'+
+     '<div class="cell"><div class="k">Рейс</div><div class="v">'+ (["Школа","Агентство","Продюсер","Онлайн"][state.seg.kind]||"Проект") +'</div></div>'+
+     '<div class="cell"><div class="k">Экипаж</div><div class="v">'+esc(SEGMENTS[1].o[state.seg.team]||"—")+'</div></div>'+
+   '</div>';
+  s.appendChild(pass);
+
+  var story=el("div",{class:"section"}); story.appendChild(el("p",{class:"story"},esc(t.story))); s.appendChild(story);
+
+  var rec=el("div",{class:"section"}); rec.appendChild(el("h3",null,"Узнаёте себя?"));
+  var ul=el("ul",{class:"checks"}); t.checks.forEach(function(c){ ul.appendChild(el("li",null,esc(c))); }); rec.appendChild(ul); s.appendChild(rec);
+
+  var pairs=el("div",{class:"section pairs"});
+  t.pairs.forEach(function(p){ var d=el("div",{class:"pair"}); d.appendChild(el("p",{class:"k"},esc(p[0]))); d.appendChild(el("p",null,esc(p[1]))); pairs.appendChild(d); });
+  s.appendChild(pairs);
+
+  var goal = state.seg.goal!=null ? state.seg.goal : 0;
+  var st=el("div",{class:"section"}); st.appendChild(el("h3",null,"Первый шаг на этой неделе"));
+  var box=el("div",{class:"step"}); box.appendChild(el("p",null,esc(FIRST_STEP[goal])));
+  if(state.seg.sales===2) box.appendChild(el("p",null,"Раз вакансия открыта — начните с найма. Неправильный продажник обходится дороже, чем пустое место."));
+  if(state.seg.sales===3 && state.seg.team===0) box.appendChild(el("p",null,"Сначала опишите, как продаёте вы. Без этого нанятый человек будет продавать не ваш продукт, а свой."));
+  st.appendChild(box); s.appendChild(st);
+
+  var offer=el("section",{class:"offer","aria-labelledby":"offer-title"});
+  var isD = key==="D";
+  var message = "Здравствуйте, Анастасия! Прошёл(а) тест «Узкое горлышко». Мой результат: "+t.name+" ("+t.days+" без меня). Хочу на разбор.";
+  offer.innerHTML =
+   '<p class="eyebrow">Разбор «Узкое горлышко» · с Анастасией Русиновой</p>'+
+   '<h2 id="offer-title">'+(isD?"Готовы масштабировать? Разберём, что мешает проекту расти без вас":"Где ваш проект застревает на вас?")+'</h2>'+
+   '<p>За полтора часа мы разложим, какие решения проходят через вас, что отдать команде первым и как сделать так, чтобы продажи шли без вашего ручного управления. Вы уйдёте с планом на ближайший месяц, а не с общими советами.</p>'+
+   '<div class="facts"><span class="chip">1,5 часа онлайн</span><span class="chip">Один на один</span><span class="chip price">10 000 ₽</span></div>'+
+   '<p class="k" style="font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin-bottom:8px">Что будет на разборе</p>'+
+   '<ul><li>Карта ваших решений: что команда решает сама, о чём сообщает после, что согласует с вами.</li>'+
+   '<li>Продажи без вас: правила по скидкам, клиентам и заявкам, найм или замена продажника.</li>'+
+   '<li>Оплата ключевых людей: схема «фикс + KPI», которая не съедает маржу.</li>'+
+   '<li>План на 30 дней: три шага в порядке очереди, с ответственными.</li></ul>'+
+   '<div class="cta-row"><a class="btn" id="tg" href="'+TG_URL+'" target="_blank" rel="noopener">Записаться в Telegram →</a></div>'+
+   '<p class="msg">Напишите в Telegram сообщение ниже — так я сразу увижу ваш результат:</p>'+
+   '<div class="msg-box" id="msg">'+esc(message)+'</div>'+
+   '<button class="ghost copy" type="button" id="copy">Скопировать сообщение</button>';
+  s.appendChild(offer);
+
+  var rs=el("div",{class:"restart"});
+  rs.appendChild(el("span",null,"Ответы хранятся только в этом браузере."));
+  var again=el("button",{class:"ghost",type:"button"},"Пройти заново"); again.addEventListener("click",function(){ state=fresh(); render(); });
+  rs.appendChild(again); s.appendChild(rs);
+  app.appendChild(s);
+
+  var copy=document.getElementById("copy");
+  copy.addEventListener("click",function(){
+    var done=function(){ copy.textContent="Скопировано"; setTimeout(function(){copy.textContent="Скопировать сообщение";},2000); };
+    var fallback=function(){ var r=document.createRange(); r.selectNodeContents(document.getElementById("msg")); var sel=window.getSelection(); sel.removeAllRanges(); sel.addRange(r); copy.textContent="Выделено — скопируйте вручную"; };
+    try{ navigator.clipboard.writeText(message).then(done,fallback); }catch(e){ fallback(); }
+  });
+}
+
+if(state.screen==="loading") state.screen="result";
+render();
+})();
+</script>
+
+</body>
+</html>
