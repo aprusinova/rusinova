@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Тело сделало ход. Теперь ваш — Школа Егора Надымова</title>
-<meta name="description" content="Одна сессия, четыре хода, 100 очков доверия. Узнайте, что на самом деле мешает вам помогать людям снимать зажимы и блоки.">
+<title>Одна сессия с клиентом — игра от Егора Надымова</title>
+<meta name="description" content="Сыграйте в игру и проживите одну сессию с клиентом. Узнайте, что на самом деле мешает вам помогать людям снимать зажимы и блоки.">
 <style>
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
 @font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -188,6 +188,28 @@ body.dark .opt:hover{border-color:rgba(196,0,255,.6);background:rgba(155,44,255,
 .tg{background:#2AABEE}.mx{background:linear-gradient(135deg,#4B8BFF,#8E4BFF)}
 .mail{grid-column:1/-1;background:transparent!important;color:var(--plum)!important;border:1px solid var(--line)!important;font-weight:500!important}
 .disc{font-size:11px;color:var(--muted);line-height:1.5;margin-top:22px;text-align:center}
+.eyebrow{display:inline-block;margin-top:14px;font:600 11px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--violet);padding:6px 11px;border-radius:99px;background:rgba(155,44,255,.08)}
+.hero{position:relative;margin:6px -20px 0;height:250px;overflow:hidden;display:flex;justify-content:center;align-items:flex-end}
+.hero::before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;bottom:-40px;left:50%;transform:translateX(-50%);background:radial-gradient(circle,rgba(227,197,249,.9),rgba(205,219,250,.5) 55%,transparent 72%)}
+.hero img{position:relative;height:270px;width:auto;margin-bottom:-20px;-webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
+.hero .cap{position:absolute;right:16px;top:28px;text-align:right;font-size:11.5px;line-height:1.35;color:var(--plum);background:rgba(255,255,255,.75);padding:7px 10px;border-radius:12px;backdrop-filter:blur(4px)}
+.hero .cap b{display:block;font:600 13px var(--f-body)}
+.steps{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.steps li{display:flex;gap:12px;align-items:flex-start;font-size:15px;line-height:1.45;color:#3E3946}
+.steps li i{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font:700 13px var(--f-num);font-style:normal;color:#fff;background:linear-gradient(135deg,var(--violet),var(--violet2))}
+.rules{display:flex;gap:10px;margin:18px 0 6px}
+.rules .mini{background:rgba(255,255,255,.06);border-color:var(--nightline)}
+.rules .mini .n{color:#F0DEFF}.rules .mini .t{color:rgba(244,236,250,.6)}
+.rules .mini.clk .n{color:#E7B6FF}
+.note{margin-top:14px;padding:14px 16px;border-radius:14px;background:rgba(151,189,243,.1);border:1px solid rgba(151,189,243,.3);font-size:14.5px;line-height:1.55;color:#E9E2F0}
+.note b{color:#fff}
+.truth{margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid var(--nightline);font-size:14.5px;line-height:1.55;color:#EDE4F4}
+.invite{display:flex;gap:12px;align-items:flex-end;margin:-4px -4px 6px}
+.invite img{width:96px;height:auto;flex:none;-webkit-mask-image:linear-gradient(180deg,#000 80%,transparent);mask-image:linear-gradient(180deg,#000 80%,transparent)}
+.invite p{font:500 17px/1.3 var(--f-head);color:var(--plum);padding-bottom:10px}
+.jump{display:inline-block;margin-top:14px;padding:11px 16px;border-radius:12px;font:600 14px var(--f-body);color:#fff;background:linear-gradient(100deg,var(--violet),var(--violet2));text-decoration:none;border:0;cursor:pointer}
+h1.ch{font-size:34px;margin-top:12px}
+.herocap{text-align:center;font-size:12px;color:var(--muted);margin-top:6px}
 .fade{animation:sc .5s ease}
 @keyframes sc{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (min-width:600px){h1{font-size:46px}.wrap{padding-top:28px}}
@@ -224,7 +246,7 @@ const SEGS = [
 ];
 const SEG_ALIAS = {hands:"hands", telo:"hands", body:"hands", word:"word", psy:"word", energy:"energy", energo:"energy", start:"start", other:"start", none:"start"};
 
-const TIMEOUT = {d:-15, r:"Пока вы думали, тело почувствовало вашу неуверенность. Оно не ждёт — оно закрывается.", c:"Растерянность"};
+const TIMEOUT = {d:-15, r:"Пока вы думали, человек почувствовал вашу неуверенность — и закрылся.", c:"Растерянность"};
 
 const SCENES = {
 hands:{ name:"Шестая за день", who:"Ольга",
@@ -320,18 +342,18 @@ start:{ name:"Подруга на кухне", who:"Лена",
 const PRE = [
  {q:"Когда рядом человек, которому плохо, вы первым делом…", a:[
    ["делаю что-то руками","sila"],[g("прислушиваюсь, что чувствую {сама|сам}"),"chut"],["пытаюсь понять причину","kont"],["чувствую его состояние как своё","serd"],["настраиваюсь, будто подключаюсь","pot"]]},
- {q:"После дня, когда вы много отдавали людям, вы…", a:[
-   ["гудит тело, будто разгружали вагоны","sila"],["как оголённый провод","chut"],[g("прокручиваю, что {сделала|сделал} не так"),"kont"],["долго «снимаю» с себя чужое","serd"],[g("пусто, будто всё из себя {вылила|вылил}"),"pot"]]},
- {q:"Какая фраза про вас?", a:[
+ {q:"После тяжёлого дня с людьми вы…", a:[
+   ["тело гудит, будто разгружали вагоны","sila"],["как оголённый провод","chut"],[g("прокручиваю, что {сделала|сделал} не так"),"kont"],["долго «снимаю» с себя чужое","serd"],[g("пусто, будто всё {отдала|отдал}"),"pot"]]},
+ {q:"Какая фраза больше про вас?", a:[
    [g("«Лучше сделаю {сама|сам} и как следует»"),"sila"],["«Я многое чувствую, но не могу объяснить»","chut"],["«Пока не пойму, как это работает, не начну»","kont"],["«Мне не всё равно, и это выматывает»","serd"],["«Иногда идёт само, и я не знаю откуда»","pot"]]}
 ];
 const POST = [
- {q:"В этой партии вам было труднее всего…", w:2, a:[
+ {q:"Что в этой сессии далось труднее всего?", w:2, a:[
    ["не знать, что делать руками","sila"],["не понимать, что я чувствую","chut"],["отпустить и не вмешиваться","kont"],["не взять его состояние на себя","serd"],["удержать то, что пошло","pot"]]},
- {q:"Что честнее всего останавливает вас помогать людям глубже?", key:"obj", a:[
+ {q:"Что вас сейчас останавливает сильнее всего?", key:"obj", a:[
    ["«Я мало чувствую»","low"],["«У меня нет системы, всё наугад»","sys"],["«Боюсь навредить»","harm"],["«Не на ком практиковаться»","models"],[g("«Не {уверена|уверен}, что это для меня»"),"me"]]},
- {q:"Чего вы хотите больше всего через полгода?", key:"goal", a:[
-   ["Работать глубже, чтобы результат держался","deep"],["Работать легче и не выгорать","easy"],["Понимать, что делаю, и повторять результат","repeat"],["Начать помогать людям и брать за это деньги","begin"],["Выйти на новый доход и поднять чек","money"]]}
+ {q:"Чего вы хотите через полгода?", key:"goal", a:[
+   ["Глубокий результат, который держится","deep"],["Работать легче и не выгорать","easy"],["Понимать, что делаю, и повторять результат","repeat"],["Начать помогать людям за деньги","begin"],["Новый доход и выше чек","money"]]}
 ];
 const TYPES = {
  sila:{name:"Сила", nick:"Руки-труженики", entry:"мышечную нагрузку",
@@ -367,7 +389,7 @@ const OBJ = {
  models:"Вам не на ком практиковаться. На эфире — где берут первых моделей.",
  me:"Вы не уверены, что это для вас. На эфире — истории людей, которые начинали с того же сомнения."
 };
-const GOALS = {deep:"работать глубже, чтобы результат держался", easy:"работать легче и не выгорать", repeat:"понимать, что делаете, и повторять результат", begin:"начать помогать людям и брать за это деньги", money:"выйти на новый доход и поднять чек"};
+const GOALS = {deep:"глубокого результата, который держится", easy:"работать легче и не выгорать", repeat:"понимать, что делаете, и повторять результат", begin:"начать помогать людям за деньги", money:"выйти на новый доход и поднять чек"};
 
 /* ===================== СОСТОЯНИЕ ===================== */
 const KEY = "telo_hod_v1";
@@ -411,7 +433,7 @@ function typeText(el, text, cb){
   el.classList.add("caret");
   const finish = () => { if(done) return; done = true; el.textContent = text; el.classList.remove("caret"); el.onclick = null; cb && cb(); };
   el.onclick = finish;
-  const step = () => { if(done) return; i += 2; el.textContent = text.slice(0, i); if(i >= text.length) finish(); else later(step, 22); };
+  const step = () => { if(done) return; i += 3; el.textContent = text.slice(0, i); if(i >= text.length) finish(); else later(step, 20); };
   step();
 }
 function animateNum(el, from, to, ms=900){
@@ -444,16 +466,15 @@ function go(step){ S.step = step; save(); render(); }
 function cover(){
   setDark(false);
   H(`${topbar()}
-  <div class="coverhud">
-    <div class="mini"><div class="n">100</div><div class="t">очков доверия</div></div>
-    <div class="mini clk"><div class="n">0:20</div><div class="t">на каждый ход</div></div>
-    <div class="mini"><div class="n">4</div><div class="t">хода</div></div>
-  </div>
-  <h1>Тело сделало ход.<br>Теперь ваш</h1>
-  <p class="lead">Одна сессия, четыре хода. На каждый — 20 секунд. У вас 100 очков доверия, и каждое решение чего-то стоит. Посмотрим, сколько останется у вас — и что на самом деле мешает вам помогать другим людям снимать зажимы и блоки.</p>
-  <div class="chips"><span class="chip"><b>5</b> минут</span><span class="chip">назад нельзя</span><span class="chip">лучше со звуком</span></div>
-  <div class="egor">${egorPh()}<div><p>«Я семь лет проигрывал эту партию на одном и том же ходе. Посмотрим, где ваш».</p><small>Егор Надымов, автор метода «ВитаВолна»</small></div></div>
-  <button class="btn" id="go">Начать партию</button>
+  <span class="eyebrow">Игра от Егора Надымова · 5 минут</span>
+  <div class="hero"><img src="img/egor-hero.webp" alt="Егор Надымов"></div><p class="herocap">Егор Надымов, автор метода «ВитаВолна»</p>
+  <h1 class="ch">Сыграйте в игру и проживите одну сессию с вашим клиентом</h1>
+  <ul class="steps">
+    <li><i>1</i><span>Выберите, чем вы занимаетесь, — и окажетесь в знакомой ситуации.</span></li>
+    <li><i>2</i><span>Сделайте 4 хода. Каждый влияет на то, насколько человек вам доверяет.</span></li>
+    <li><i>3</i><span>Получите разбор: ваш тип и что на самом деле мешает вам помогать людям снимать зажимы и блоки.</span></li>
+  </ul>
+  <button class="btn" id="go">Начать игру</button>
   <p class="disc">Это игра-симуляция, не медицинская диагностика. Прогресс сохраняется в этом браузере.</p>`);
   bindSound();
   document.getElementById("go").onclick = () => { track("start"); go("seg"); };
@@ -462,9 +483,9 @@ function cover(){
 function segScreen(){
   setDark(false);
   H(`${topbar()}
-  <p class="moveinfo">Подготовка к партии</p>
-  <h2>За каким столом вы играете?</h2>
-  <p class="lead">От этого зависит, кто окажется перед вами.</p>
+  <p class="moveinfo">Игра началась</p>
+  <h2>Чем вы сейчас занимаетесь?</h2>
+  <p class="lead">От этого зависит, кто придёт к вам на сессию.</p>
   <div class="opts">${SEGS.map(s=>`<button class="opt${S.seg===s.id?" preset":""}" data-id="${s.id}">${esc(s.t)}<span class="sub">${esc(s.s)}</span></button>`).join("")}</div>`);
   bindSound();
   app.querySelectorAll(".opt").forEach(b => b.onclick = () => { S.seg = b.dataset.id; track("seg",{v:S.seg}); go("pre0"); });
@@ -473,11 +494,12 @@ function segScreen(){
 function question(list, i, kind){
   setDark(kind==="post");
   const Q = list[i], ord = orderFor(kind+i, Q.a.length), total = list.length;
-  const label = kind==="pre" ? `Подготовка к партии · ${i+1} из ${total}` : `Разбор партии · ${i+1} из ${total}`;
+  const label = kind==="pre" ? `Игра началась · разминка ${i+1} из ${total}` : `После сессии · ${i+1} из ${total}`;
   H(`${topbar()}
   <div class="prog">${list.map((_,k)=>`<i class="${k<=i?"on":""}"></i>`).join("")}</div>
   <p class="moveinfo">${label}</p>
   <h2>${esc(Q.q)}</h2>
+  ${i===0?`<p class="small" style="margin-top:8px">${kind==="pre"?"Три коротких вопроса о вас — перед тем как придёт клиент. От ответов зависит ваш разбор в конце.":"Три коротких вопроса — и разбор вашей игры."}</p>`:""}
   <div class="opts">${ord.map(k=>`<button class="opt" data-k="${k}">${esc(Q.a[k][0])}</button>`).join("")}</div>`);
   bindSound();
   app.querySelectorAll(".opt").forEach(b => b.onclick = () => {
@@ -495,9 +517,14 @@ function question(list, i, kind){
 function ready(){
   setDark(true);
   H(`${topbar()}
-  <p class="moveinfo">Фигуры расставлены</p>
-  <h2>Дальше часы идут по-настоящему</h2>
-  <p class="lead" style="color:rgba(244,236,250,.8)">20 секунд на ход. Не успели — тело почувствует вашу растерянность. Как и на настоящей сессии.<br><br>Свет приглушён. Перед вами человек.</p>
+  <p class="moveinfo">Сессия начинается</p>
+  <h2>Свет приглушён. Сейчас к вам придёт человек</h2>
+  <div class="rules">
+    <div class="mini"><div class="n">100</div><div class="t">очков доверия</div></div>
+    <div class="mini clk"><div class="n">0:30</div><div class="t">на каждый ход</div></div>
+    <div class="mini"><div class="n">4</div><div class="t">хода</div></div>
+  </div>
+  <div class="note"><b>Доверие</b> — это то, насколько человек открывается вам. Чем точнее вы его ведёте, тем больше доверия. Неверный шаг — доверие падает.<br><br>На каждый ход — 30 секунд, как в шахматах. Не успели — человек почувствует вашу растерянность, и это тоже минус. Назад вернуться нельзя, как и на настоящей сессии.</div>
   <button class="btn" id="go">Первый ход</button>`);
   bindSound();
   document.getElementById("go").onclick = () => { ac(); S.move = 0; S.phase="play"; S.trust = 100; S.cards = []; S.log = []; track("game_start"); go("intro"); };
@@ -506,7 +533,7 @@ function ready(){
 function hud(showClock){
   return `<div class="hud">
     <div class="trust"><div style="flex:1"><div class="lbl">Доверие тела</div><div class="bar"><i id="bar" style="width:${Math.max(0,S.trust)}%"></i></div></div><div class="num" id="num">${S.trust}</div></div>
-    ${showClock?`<div class="clock idle" id="clock"><svg viewBox="0 0 58 58"><circle class="bg" cx="29" cy="29" r="25"/><circle class="fg" id="arc" cx="29" cy="29" r="25" stroke-dasharray="157" stroke-dashoffset="0"/></svg><span id="sec">20</span></div>`:""}
+    ${showClock?`<div class="clock idle" id="clock"><svg viewBox="0 0 58 58"><circle class="bg" cx="29" cy="29" r="25"/><circle class="fg" id="arc" cx="29" cy="29" r="25" stroke-dasharray="157" stroke-dashoffset="0"/></svg><span id="sec">30</span></div>`:""}
   </div>`;
 }
 const lostRow = () => `<div class="lost"><div class="stack">${S.cards.slice(-3).map(()=>"<i></i>").join("")}</div>Потеряно: <b style="color:var(--loss)">${S.cards.length}</b></div>`;
@@ -544,11 +571,11 @@ function move(){
     document.getElementById("hint").style.display = "none";
     const box = document.getElementById("opts");
     box.innerHTML = ord.map(k=>`<button class="opt" data-k="${k}">${esc(M.o[k].t)}</button>`).join("");
-    let left = 20, answered = false;
+    let left = 30, answered = false;
     const clock = document.getElementById("clock"), arc = document.getElementById("arc"), sec = document.getElementById("sec");
     clock.classList.remove("idle");
     const iv = setInterval(() => {
-      left--; sec.textContent = Math.max(0,left); arc.style.strokeDashoffset = String(157*(1-left/20));
+      left--; sec.textContent = Math.max(0,left); arc.style.strokeDashoffset = String(157*(1-left/30));
       if(left<=5){ clock.classList.add("warn"); tick(); }
       if(left<=0){ clearInterval(iv); if(!answered){ answered = true; resolve(null); } }
     }, 1000); timers.push(iv);
@@ -586,28 +613,29 @@ function outro(){
   ${lostRow()}`);
   bindSound();
   typeText(document.getElementById("txt"), sc.outro, () => {
-    document.getElementById("after").innerHTML = `<button class="btn" id="go">Посмотреть счёт партии</button>`;
+    document.getElementById("after").innerHTML = `<button class="btn" id="go">Посмотреть счёт</button>`;
     document.getElementById("go").onclick = () => { track("game_end",{score:S.trust}); go("final"); };
   });
 }
 
 function outcome(score){
-  if(score >= 75) return {k:"Почти победа", t:"Тело вам поверило. Но честно: вы знаете почему? Завтра, с другим человеком, вы повторите эту партию?"};
-  if(score >= 50) return {k:"Пат", t:"Никто не выиграл. Тело приоткрылось — и закрылось ровно в тот момент, когда вы не знали, что делать."};
+  if(score >= 75) return {k:"Почти победа", t:"Тело вам поверило. Но честно: вы знаете почему? Завтра, с другим человеком, у вас получится так же?"};
+  if(score >= 50) return {k:"Ничья", t:"Никто не выиграл. Тело приоткрылось — и закрылось ровно в тот момент, когда вы не знали, что делать."};
   return {k:"Тело закрылось", t:"Не потому, что вы мало чувствуете. А потому, что в главный момент у вас не было хода."};
 }
 function finalScreen(){
   setDark(true);
   const oc = outcome(S.trust), cards = S.cards.slice(-3);
   H(`<div class="final">${topbar()}
-  <p class="moveinfo">Счёт партии</p>
+  <p class="moveinfo">Счёт игры</p>
   <div class="big" id="big">100</div>
   <div class="of">из 100 очков доверия</div>
   <div class="outcome">${esc(oc.k)}</div>
   <p class="lead" style="color:rgba(244,236,250,.85)">${esc(oc.t)}</p>
+  <div class="truth">Здесь не было правильного ответа — без системы его и нет. Такие реакции тела мастера видят в работе регулярно. Важно не то, что тело ответило, а то, что вы делаете в этот момент. Именно его Егор разбирает на эфире.</div>
   ${cards.length?`<div class="cards">${cards.map(c=>`<div class="card"><small>Потеряно</small>${esc(c)}</div>`).join("")}</div>`:""}
-  <div class="quote">${egorPh()}<div><p>«Я семь лет проигрывал именно на третьем ходе. Однажды почувствовал волну — и годами не мог её повторить. И не знал, что делать, когда тело человека начинало отвечать. Что в итоге помогло, расскажу на эфире».</p><small>Егор Надымов</small></div></div>
-  <button class="btn" id="go">Разобрать мою партию</button>
+  <div class="quote">${egorPh()}<div><p>«Я семь лет застревал именно на третьем ходе. Однажды почувствовал волну — и годами не мог её повторить. И не знал, что делать, когда тело человека начинало отвечать. Что в итоге помогло, расскажу на эфире».</p><small>Егор Надымов</small></div></div>
+  <button class="btn" id="go">Разобрать мою игру</button>
   <p class="small" style="text-align:center;margin-top:10px;color:rgba(244,236,250,.5)">Ещё 3 вопроса — и разбор</p></div>`);
   bindSound();
   animateNum(document.getElementById("big"), 100, S.trust, 1400);
@@ -638,14 +666,16 @@ function result(){
   const slots = slotOptions();
   if(!S.slot || !slots.find(s=>s.id===S.slot)) S.slot = (slots.find(s=>s.label.startsWith("Завтра") && s.label.endsWith("19:00"))||slots[0]).id;
   H(`<div class="res">${topbar()}
-  <p class="moveinfo">Разбор партии · ${S.trust} из 100</p>
+  <p class="moveinfo">Разбор игры · доверие ${S.trust} из 100</p>
   <span class="type">Ваш тип — ${esc(T.name)} · «${esc(T.nick)}»</span>
   <h2 style="margin-top:14px">${esc(T.hit)}</h2>
+  <button class="jump" id="jump">Записаться на эфир Егора ↓</button>
   <div class="block"><h3>Где вы теряете доверие</h3><p>${esc(T.loss)}</p>${S.obj?`<p style="margin-top:10px">${esc(OBJ[S.obj])}</p>`:""}</div>
   <div class="block good"><h3>Хорошая новость</h3><p>${esc(T.good)} И чтобы начать работать с другим человеком, не нужно сначала ярко чувствовать самому.</p></div>
   ${S.goal?`<div class="block warm"><h3>Ваша цель</h3><p>Вы хотите ${esc(GOALS[S.goal])}. С этого и начнём.</p></div>`:""}
 
-  <div class="webinar">
+  <div class="webinar" id="web">
+    <div class="invite"><img src="img/egor-invite.webp" alt="Егор Надымов"><p>«Приглашаю на эфир — покажу, что делать в этот момент»</p></div>
     <div class="k">Бесплатный эфир Егора Надымова</div>
     <h2>${esc(WEBINAR)}</h2>
     <p class="lead" style="font-size:15px">На эфире я покажу, что делать в ту самую секунду, когда тело человека начинает отвечать. И как начать через ваш вход — даже если сами вы пока чувствуете мало.</p>
@@ -668,6 +698,7 @@ function result(){
   <p class="disc">Тест-игра помогает заметить, что мешает в работе с человеком. Это не медицинская диагностика и не обещание результата.</p></div>`);
   bindSound();
   track("result",{type:tk, score:S.trust, obj:S.obj});
+  document.getElementById("jump").onclick = () => document.getElementById("web").scrollIntoView({behavior:"smooth"});
   app.querySelectorAll(".slot").forEach(el => el.onclick = () => { S.slot = el.dataset.id; save(); app.querySelectorAll(".slot").forEach(x=>x.classList.toggle("sel", x===el)); });
   const setLinks = () => { const a = app.querySelector('.msgr [data-m=tg]'), b = app.querySelector('.msgr [data-m=max]'); a.href = CONFIG.telegram + encodeURIComponent(payload()); b.href = CONFIG.max + encodeURIComponent(payload()); };
   setLinks();
@@ -688,10 +719,10 @@ function done(){
   const s = slotOptions().find(x=>x.id===S.slot);
   const where = S.msg==="mail" ? "на почту" : (S.msg==="max" ? "в MAX" : "в Telegram");
   H(`${topbar()}
-  <h1 style="margin-top:30px">Вы в партии</h1>
+  <h1 style="margin-top:30px">Вы в игре — до встречи на эфире</h1>
   <p class="lead">Эфир: <b>${esc(s?s.label:"завтра")}</b>${s?` (${esc(s.sub)})`:""}. Ссылку с автовходом и напоминание пришлём ${where}.</p>
   ${S.msg!=="mail"?`<p class="lead">Если бот не открылся, нажмите ещё раз:</p><div class="msgr"><a class="${S.msg==="max"?"mx":"tg"}" target="_blank" rel="noopener" href="${(S.msg==="max"?CONFIG.max:CONFIG.telegram)+encodeURIComponent(payload())}">Открыть бота</a></div>`:""}
-  <div class="egor">${egorPh()}<div><p>«До встречи на эфире. Возьмите с собой ваш счёт — ${S.trust} из 100. Посмотрим, что с ним станет».</p><small>Егор Надымов</small></div></div>
+  <div class="egor">${egorPh()}<div><p>«Возьмите с собой ваш счёт — ${S.trust} из 100. На эфире посмотрим, что с ним станет».</p><small>Егор Надымов</small></div></div>
   <p class="disc">Прогресс сохранён в этом браузере.</p>`);
   bindSound();
 }
