@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Тело сделало ход. Теперь ваш — Школа Егора Надымова</title>
+<meta name="description" content="Одна сессия, четыре хода, 100 очков доверия. Узнайте, что на самом деле мешает вам помогать людям снимать зажимы и блоки.">
+<style>
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/cormorant-garamond-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/cormorant-garamond-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/cormorant-garamond-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-cyrillic-400-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(fonts/inter-latin-400-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-cyrillic-500-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:500;font-display:swap;src:url(fonts/inter-latin-500-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/inter-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/montserrat-cyrillic-600-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:600;font-display:swap;src:url(fonts/montserrat-latin-600-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/montserrat-cyrillic-700-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:700;font-display:swap;src:url(fonts/montserrat-latin-700-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/montserrat-cyrillic-800-normal.woff2) format('woff2');unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:800;font-display:swap;src:url(fonts/montserrat-latin-800-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --cream:#F8F5EF; --white:#FFFFFF; --off:#F1F1F1;
+  --lav1:#E3C5F9; --lav2:#CDDBFA; --vanilla:#FFF1C8; --peach:#E5CCBE; --pink:#FFE4D7; --sky:#97BDF3;
+  --plum:#65516F; --ink:#2C2D34; --muted:#7B7482; --line:#E6E0EA;
+  --violet:#9B2CFF; --violet2:#C400FF;
+  --night1:#1E1726; --night2:#33263F; --nightline:rgba(227,197,249,.18);
+  --loss:#FF6B8B; --gain:#97BDF3;
+  --f-head:"Cormorant Garamond", Georgia, serif;
+  --f-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-num:"Montserrat", system-ui, sans-serif;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:var(--f-body);color:var(--ink);background:var(--cream);-webkit-font-smoothing:antialiased;transition:background .8s ease,color .8s ease;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;
+  background:radial-gradient(40% 35% at 85% 10%,rgba(227,197,249,.75),transparent 70%),
+             radial-gradient(45% 40% at 5% 95%,rgba(205,219,250,.8),transparent 70%),
+             radial-gradient(30% 30% at 10% 20%,rgba(255,228,215,.7),transparent 70%);
+  transition:opacity .8s ease}
+body.dark{background:var(--night1);color:#F4ECFA}
+body.dark::before{background:radial-gradient(45% 35% at 80% 0%,rgba(155,44,255,.28),transparent 70%),
+             radial-gradient(50% 40% at 0% 100%,rgba(151,189,243,.18),transparent 70%),
+             linear-gradient(180deg,var(--night1),var(--night2))}
+body.dark.pulse::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;
+  box-shadow:inset 0 0 120px 30px rgba(255,107,139,.0);animation:beat 1.1s infinite}
+@keyframes beat{0%,100%{box-shadow:inset 0 0 90px 10px rgba(255,107,139,.05)}12%{box-shadow:inset 0 0 140px 40px rgba(255,107,139,.35)}24%{box-shadow:inset 0 0 90px 10px rgba(255,107,139,.08)}36%{box-shadow:inset 0 0 130px 30px rgba(255,107,139,.28)}}
+body.flash-loss::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:6;background:rgba(255,107,139,.22);animation:fade .7s forwards}
+body.flash-gain::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:6;background:rgba(151,189,243,.22);animation:fade .7s forwards}
+@keyframes fade{to{opacity:0}}
+
+.wrap{max-width:540px;margin:0 auto;min-height:100%;padding:18px 20px 40px;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:10px;min-height:44px}
+.brand{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);font-weight:500}
+body.dark .brand{color:rgba(244,236,250,.7)}
+.brand img{width:22px;height:22px}
+.top .sp{flex:1}
+.snd{border:1px solid var(--line);background:transparent;color:inherit;border-radius:99px;font:500 11px var(--f-body);padding:6px 10px;cursor:pointer}
+body.dark .snd{border-color:var(--nightline)}
+
+/* HUD */
+.hud{display:flex;align-items:center;gap:12px;margin:10px 0 6px}
+.trust{flex:1;display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:16px;background:rgba(255,255,255,.65);border:1px solid var(--line)}
+body.dark .trust{background:rgba(255,255,255,.05);border-color:var(--nightline);box-shadow:0 0 30px rgba(155,44,255,.15)}
+.trust .lbl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+body.dark .trust .lbl{color:rgba(244,236,250,.6)}
+.trust .num{font:800 30px/1 var(--f-num);color:var(--plum);min-width:58px;font-variant-numeric:tabular-nums;transition:color .3s}
+body.dark .trust .num{color:#F0DEFF;text-shadow:0 0 18px rgba(196,0,255,.55)}
+.trust .num.down{color:var(--loss)!important;text-shadow:0 0 18px rgba(255,107,139,.6)!important}
+.trust .num.up{color:var(--gain)!important;text-shadow:0 0 18px rgba(151,189,243,.7)!important}
+.bar{height:6px;border-radius:9px;background:rgba(101,81,111,.12);overflow:hidden;margin-top:6px}
+body.dark .bar{background:rgba(255,255,255,.1)}
+.bar i{display:block;height:100%;width:100%;border-radius:9px;background:linear-gradient(90deg,var(--lav1),var(--lav2));transition:width .9s cubic-bezier(.2,.8,.2,1)}
+body.dark .bar i{background:linear-gradient(90deg,var(--violet),var(--sky))}
+.clock{width:58px;height:58px;position:relative;flex:none}
+.clock svg{width:58px;height:58px;transform:rotate(-90deg)}
+.clock circle{fill:none;stroke-width:5}
+.clock .bg{stroke:rgba(101,81,111,.15)}
+body.dark .clock .bg{stroke:rgba(255,255,255,.12)}
+.clock .fg{stroke:var(--violet);stroke-linecap:round;transition:stroke .3s}
+.clock.warn .fg{stroke:var(--loss)}
+.clock span{position:absolute;inset:0;display:grid;place-items:center;font:700 15px var(--f-num);font-variant-numeric:tabular-nums}
+.clock.warn span{color:var(--loss)}
+.clock.idle{opacity:.35}
+.moveinfo{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+body.dark .moveinfo{color:rgba(244,236,250,.55)}
+
+h1{font:500 40px/1.05 var(--f-head);color:var(--plum);letter-spacing:-.01em}
+h2{font:500 30px/1.12 var(--f-head);color:var(--plum)}
+body.dark h1,body.dark h2{color:#F4ECFA}
+.lead{font-size:16px;line-height:1.55;color:#4A4452;margin-top:14px}
+.small{font-size:12.5px;color:var(--muted);line-height:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{font-size:12px;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.7);border:1px solid var(--line);color:var(--plum)}
+.chip b{font-family:var(--f-num)}
+
+.coverhud{display:flex;gap:10px;margin:26px 0 8px}
+.mini{flex:1;border-radius:16px;padding:12px 14px;background:rgba(255,255,255,.7);border:1px solid var(--line)}
+.mini .n{font:800 26px/1 var(--f-num);color:var(--plum)}
+.mini .t{font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+.mini.clk .n{color:var(--violet)}
+
+.egor{display:flex;gap:12px;align-items:center;margin-top:22px;padding:14px;border-radius:var(--r);background:linear-gradient(135deg,rgba(255,241,200,.7),rgba(255,228,215,.7));border:1px solid rgba(229,204,190,.7)}
+.ph{width:56px;height:56px;border-radius:50%;flex:none;background:linear-gradient(135deg,var(--lav1),var(--lav2));display:grid;place-items:center;font:600 18px var(--f-head);color:var(--plum);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.egor p{font:500 17px/1.3 var(--f-head);color:var(--plum)}
+.egor small{display:block;font:400 12px var(--f-body);color:var(--muted);margin-top:4px}
+
+.btn{display:block;width:100%;margin-top:22px;padding:17px 20px;border:0;border-radius:16px;cursor:pointer;font:600 16px var(--f-body);color:#fff;
+  background:linear-gradient(100deg,var(--violet),var(--violet2));box-shadow:0 10px 30px rgba(155,44,255,.3);transition:transform .15s,box-shadow .2s}
+.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--plum);border:1px solid var(--line);box-shadow:none}
+body.dark .btn.ghost{color:#F4ECFA;border-color:var(--nightline)}
+.btn[disabled]{opacity:.45;pointer-events:none}
+
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.opt{text-align:left;padding:15px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.8);font:400 15px/1.4 var(--f-body);color:var(--ink);cursor:pointer;transition:border-color .2s,transform .15s,background .2s;opacity:0;transform:translateY(8px);animation:in .35s forwards}
+.opt:hover{border-color:var(--lav1)}
+.opt:active{transform:scale(.99)}
+.opt .sub{display:block;font-size:12px;color:var(--muted);margin-top:3px}
+body.dark .opt{background:rgba(255,255,255,.06);border-color:var(--nightline);color:#F4ECFA}
+body.dark .opt:hover{border-color:rgba(196,0,255,.6);background:rgba(155,44,255,.12)}
+.opt.sel{border-color:var(--violet);background:rgba(155,44,255,.1)}
+.opt.preset{border-color:var(--violet)}
+.opt.dim{opacity:.35!important}
+@keyframes in{to{opacity:1;transform:none}}
+.opt:nth-child(2){animation-delay:.08s}.opt:nth-child(3){animation-delay:.16s}.opt:nth-child(4){animation-delay:.24s}.opt:nth-child(5){animation-delay:.32s}
+
+.scene{margin-top:8px;min-height:120px;font:400 17px/1.6 var(--f-body);color:#F4ECFA;white-space:pre-line;cursor:pointer}
+.scene .hl{color:#F0DEFF;font-weight:500}
+.caret::after{content:"▍";animation:blink 1s steps(1) infinite;color:var(--violet2);margin-left:1px}
+@keyframes blink{50%{opacity:0}}
+.hint{font-size:11px;color:rgba(244,236,250,.4);margin-top:8px}
+.cons{margin-top:16px;padding:14px 16px;border-radius:14px;border-left:3px solid var(--loss);background:rgba(255,107,139,.08);font:400 15px/1.55 var(--f-body);color:#F4ECFA;white-space:pre-line}
+.cons.gain{border-left-color:var(--gain);background:rgba(151,189,243,.1)}
+.delta{font:800 15px var(--f-num);margin-right:6px}
+.delta.m{color:var(--loss)}.delta.p{color:var(--gain)}
+
+.lost{margin-top:auto;padding-top:22px;display:flex;align-items:center;gap:10px;font-size:12px;color:rgba(244,236,250,.6)}
+.stack{position:relative;width:34px;height:26px}
+.stack i{position:absolute;width:26px;height:20px;border-radius:5px;border:1px solid rgba(255,107,139,.6);background:#2A1F33;left:0;top:4px}
+.stack i:nth-child(2){left:4px;top:2px}.stack i:nth-child(3){left:8px;top:0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(30px);opacity:0;z-index:20;max-width:92%;
+  padding:12px 16px;border-radius:14px;background:#2A1F33;border:1px solid rgba(255,107,139,.5);color:#F4ECFA;font-size:13px;box-shadow:0 12px 40px rgba(0,0,0,.4);transition:all .4s}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast b{color:var(--loss);font-weight:600}
+
+.final .big{font:800 88px/1 var(--f-num);background:linear-gradient(100deg,#F0DEFF,var(--sky));-webkit-background-clip:text;background-clip:text;color:transparent;margin-top:18px;font-variant-numeric:tabular-nums}
+.final .of{font-size:13px;color:rgba(244,236,250,.6);margin-top:4px}
+.outcome{display:inline-block;margin-top:18px;font:600 12px var(--f-body);letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:99px;border:1px solid var(--nightline);color:#F0DEFF}
+.cards{display:flex;flex-direction:column;gap:8px;margin-top:18px}
+.card{padding:12px 14px;border-radius:12px;background:rgba(255,107,139,.08);border:1px solid rgba(255,107,139,.35);font-size:14px;color:#F4ECFA;opacity:0;transform:translateY(10px) rotate(-1deg);transition:all .5s}
+.card.on{opacity:1;transform:none}
+.card small{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--loss);margin-bottom:3px}
+.quote{margin-top:22px;padding:16px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid var(--nightline);display:flex;gap:12px}
+.quote p{font:500 18px/1.35 var(--f-head);color:#F4ECFA}
+.quote small{display:block;font:400 12px var(--f-body);color:rgba(244,236,250,.55);margin-top:8px}
+
+.prog{display:flex;gap:6px;margin:14px 0 4px}
+.prog i{flex:1;height:4px;border-radius:9px;background:rgba(101,81,111,.15)}
+.prog i.on{background:linear-gradient(90deg,var(--violet),var(--violet2))}
+
+.res .type{display:inline-block;margin-top:14px;font:600 12px var(--f-body);letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;border-radius:99px;background:linear-gradient(100deg,var(--lav1),var(--lav2));color:var(--plum)}
+.block{margin-top:14px;padding:16px;border-radius:var(--r);background:rgba(255,255,255,.75);border:1px solid var(--line)}
+.block h3{font:600 12px var(--f-body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.block p{font-size:15px;line-height:1.55;color:#3E3946}
+.block.good{background:linear-gradient(135deg,rgba(205,219,250,.6),rgba(227,197,249,.5))}
+.block.warm{background:linear-gradient(135deg,rgba(255,241,200,.75),rgba(255,228,215,.75));border-color:rgba(229,204,190,.7)}
+.webinar{margin-top:22px;padding:20px;border-radius:22px;background:#fff;border:1px solid var(--line);box-shadow:0 18px 50px rgba(101,81,111,.12)}
+.webinar .k{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);font-weight:600}
+.webinar h2{margin-top:8px;font-size:27px}
+.webinar ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.webinar li{position:relative;padding-left:22px;font-size:14.5px;line-height:1.5;color:#3E3946}
+.webinar li::before{content:"";position:absolute;left:2px;top:7px;width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--sky))}
+.gifts{margin-top:14px;padding:12px 14px;border-radius:14px;background:var(--vanilla);font-size:13.5px;line-height:1.5;color:#5A4B3B}
+.slots{display:grid;gap:10px;margin-top:16px}
+.slot{display:flex;justify-content:space-between;align-items:center;padding:15px 16px;border-radius:14px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font:500 15px var(--f-body);color:var(--ink)}
+.slot small{font-weight:400;color:var(--muted);font-size:12px}
+.slot.sel{border-color:var(--violet);background:rgba(155,44,255,.06)}
+.slot .dot{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line);flex:none}
+.slot.sel .dot{border:5px solid var(--violet)}
+.msgr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.msgr a,.msgr button{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 10px;border-radius:14px;text-decoration:none;font:600 15px var(--f-body);color:#fff;border:0;cursor:pointer}
+.tg{background:#2AABEE}.mx{background:linear-gradient(135deg,#4B8BFF,#8E4BFF)}
+.mail{grid-column:1/-1;background:transparent!important;color:var(--plum)!important;border:1px solid var(--line)!important;font-weight:500!important}
+.disc{font-size:11px;color:var(--muted);line-height:1.5;margin-top:22px;text-align:center}
+.fade{animation:sc .5s ease}
+@keyframes sc{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@media (min-width:600px){h1{font-size:46px}.wrap{padding-top:28px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<div class="toast" id="toast"></div>
+<script>
+/* ===================== НАСТРОЙКИ ===================== */
+const CONFIG = {
+  telegram: "https://t.me/YOUR_BOT?start=",   // ссылка на бот Telegram, в конец добавится метка
+  max: "https://max.ru/YOUR_BOT?start=",       // ссылка на бот MAX
+  registerUrl: "",   // адрес приёма регистрации (GetCourse / обработчик). Пусто = только переход в бот
+  trackUrl: "",      // адрес для статистики (необязательно)
+  slots: [15, 19],   // часы эфира по Москве
+  egorPhoto: ""      // ссылка на фото Егора (квадрат). Пусто = заглушка
+};
+const SPIRAL = "data:image/png;base64,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";
+const WEBINAR = "Как запускать энерговолну у другого человека — даже если вы сами пока ничего не чувствуете";
+
+/* ===================== ПАРАМЕТРЫ ИЗ ССЫЛКИ ===================== */
+const QS = new URLSearchParams(location.search);
+const SEX = QS.get("sex") === "m" ? "m" : "f";
+const g = s => s.replace(/\{([^|{}]*)\|([^|{}]*)\}/g, (m, f, mm) => SEX === "m" ? mm : f);
+
+/* ===================== СЕГМЕНТЫ И СЦЕНЫ ===================== */
+const SEGS = [
+  {id:"hands",  t:"Я работаю руками", s:"массаж, остеопатия, кинезио, косметология"},
+  {id:"word",   t:"Я работаю словом", s:"психолог, коуч, терапевт"},
+  {id:"energy", t:"Я работаю с энергией", s:"рейки, энергопрактики, целительство"},
+  {id:"start",  t:"Я пока не помогаю людям, но тянет", s:"или работаю в другой сфере"}
+];
+const SEG_ALIAS = {hands:"hands", telo:"hands", body:"hands", word:"word", psy:"word", energy:"energy", energo:"energy", start:"start", other:"start", none:"start"};
+
+const TIMEOUT = {d:-15, r:"Пока вы думали, тело почувствовало вашу неуверенность. Оно не ждёт — оно закрывается.", c:"Растерянность"};
+
+const SCENES = {
+hands:{ name:"Шестая за день", who:"Ольга",
+  intro:"19:40. Шестая клиентка за день. Поясница ноет с обеда — сапожник без сапог, как обычно.\n\nНа кушетке Ольга, 47 лет, главный бухгалтер. Плечи каменные. Ложится и сразу предупреждает:\n«Только посильнее. Меня ещё никто промять не смог».",
+  moves:[
+   {q:"Под ладонями броня. Ольга не дышит животом, держит себя.\nЧто делаете?", o:[
+     {t:"Беру локтем и давлю сильнее — она же просила", d:-15, r:"Ольга терпит, задержав дыхание. Мышцы под локтем каменеют ещё сильнее: тело защищается. А у вас простреливает поясницу.", c:"Ваша спина — ещё один вечер"},
+     {t:"Работаю по своей обычной схеме", d:-5, r:"Ровно, грамотно, как сотни раз. Через двадцать минут вы понимаете: вы работаете с бронёй, а не с человеком."},
+     {t:"Убираю давление и просто кладу ладони", d:5, r:"Ольга удивлённо замирает. И впервые за сеанс выдыхает."}]},
+   {q:"Под правой ладонью что-то меняется. Тепло — будто изнутри пошла волна. Мышца сама дрогнула.\n\nТак у вас уже бывало — пару раз за все годы. Каждый раз само. И вы так и не поняли, что сделали.", o:[
+     {t:g("Замираю и пытаюсь повторить то, что {делала|делал} в тот раз"), d:-10, r:"Чем сильнее стараетесь, тем тише в руках. Волна уходит.", c:"Снова не поняли, что сработало"},
+     {t:"Продолжаю массаж — может, показалось", d:-15, r:"Тепло гаснет. Вы вернулись к привычному — и к привычному результату.", c:"Упустили момент"},
+     {t:"Говорю: «Подышите вот сюда» — и смотрю, что будет", d:10, r:"Ольга дышит. Плечо под ладонью начинает мелко подрагивать. Впервые за вечер вы чувствуете азарт."}]},
+   {climax:true, q:"И тут рука Ольги начинает двигаться сама.\nСначала плечо, потом вся рука — мелкая дрожь, потом сильнее.\n\nОльга открывает глаза: «Это что? Это нормально?»", o:[
+     {t:"Останавливаю всё: вдруг наврежу", d:-20, r:"Дрожь затихает. Ольга садится, растирает плечо и смотрит на вас с вопросом, на который у вас нет ответа.", c:"Страх навредить решил за вас"},
+     {t:g("Говорю: «Да, так и надо», хотя {сама не уверена|сам не уверен}"), d:-15, r:"Голос выдаёт. Ольга кивает, но тело снова собирается в броню.", c:"Сказали то, во что сами не верите"},
+     {t:"Продолжаю молча и наблюдаю", d:-15, r:"Вы смотрите и не знаете, куда это ведёт. Ольга остаётся с этим одна, и ей страшно.", c:"Человек испугался в одиночку"}]},
+   {q:"Сеанс окончен. Ольга одевается, двигает плечом:\n«Странно… Но легче. Что это было? И сколько стоит, если ходить к вам на такое?»", o:[
+     {t:"«Это мой авторский массаж» — и называю обычную цену", d:-10, r:"Она кивает. Вы обе понимаете: «авторский» — это то, что вы не можете объяснить.", c:"Чек остался прежним"},
+     {t:g("«Честно — {сама|сам} не знаю. Иногда так бывает»"), d:-5, r:"Честно. Но Ольга слышит «случайность». За случайностью не возвращаются."},
+     {t:"Перевожу тему и предлагаю записаться ещё", d:-20, r:"«Ну, может быть». На «может быть» не приходят.", c:"Ольга не вернулась"}]}
+  ],
+  outro:"22:10. Вы дома. Руки гудят так, будто весь вечер вы держали не Ольгу, а её броню. Поясница ноет.\n\nИ в голове одно: «Что это было? И почему это не происходит, когда я хочу?»"
+},
+word:{ name:"Седьмая встреча", who:"Оля",
+  intro:"Вторник, 18:00. Седьмая встреча с Олей, 38 лет. Она снова говорит про маму.\n\nВсё понимает: откуда это, какой сценарий, даже плачет в правильных местах.\nА плечи — у ушей. Как на первой встрече.",
+  moves:[
+   {q:"Вы слышите эту историю в седьмой раз.\nЧто делаете?", o:[
+     {t:"Задаю следующий точный вопрос", d:-15, r:"Оля отвечает умно и глубоко. Плечи не двигаются ни на миллиметр.", c:"Ещё одна встреча по кругу"},
+     {t:"Даю домашнее задание: вести дневник", d:-10, r:"Она кивает. Вы обе помните, чем закончились прошлые шесть заданий."},
+     {t:"Предлагаю: «Давайте минуту просто подышим»", d:5, r:"Оля смущённо закрывает глаза. Через минуту её плечи опускаются на сантиметр."}]},
+   {q:"Оля замолкает на полуслове и кладёт руку на грудь:\n«Вот тут… сжимается. Как кулак».\n\nВы знаете: это сидит в теле. И знаете, что словами туда не дотянуться.", o:[
+     {t:"Возвращаю в разговор: «О чём этот кулак?»", d:-15, r:"Оля начинает объяснять — и кулак уходит обратно вглубь. Момент закрылся.", c:"Тело сказало — вы не услышали"},
+     {t:"Хочется положить ей ладонь на спину, но я застываю", d:-10, r:"Рука так и остаётся на подлокотнике. «Клиента не трогают», — говорит голова. А тело Оли ждало.", c:"Ступор перед прикосновением"},
+     {t:"«Не объясняйте. Просто подышите в этот кулак»", d:10, r:"Оля дышит. Раз, другой. Глаза мокрые — но это другие слёзы, не из головы."}]},
+   {climax:true, q:"И вдруг у Оли начинают дрожать руки. Потом плечи.\nДрожь идёт волной, она вцепляется в кресло:\n\n«Что со мной? Я не могу это остановить!»", o:[
+     {t:"Останавливаю: «Откройте глаза, вернитесь в комнату»", d:-20, r:"Дрожь стихает. То, что поднялось, уходит обратно. Вы обе делаете вид, что ничего не было.", c:"Самое важное ушло обратно"},
+     {t:g("Объясняю, что это нормальная реакция, хотя {сама не уверена|сам не уверен}"), d:-15, r:"Слова правильные. Но объяснение снова уводит Олю в голову."},
+     {t:"Молча жду, сжав подлокотники", d:-15, r:"Вы не знаете, что будет дальше. Оля видит ваше лицо — и пугается сильнее.", c:"Оля испугалась вашей растерянности"}]},
+   {q:"Через несколько минут Оля приходит в себя:\n«Что это было? За семь встреч так ни разу… Мы будем так делать дальше?»", o:[
+     {t:"«Это телесная реакция, но я с телом не работаю»", d:-20, r:"Оля благодарит. Через неделю пишет, что нашла специалиста, «который работает с телом».", c:"Клиентка ушла к телеснику"},
+     {t:"«Давайте обсудим это в следующий раз»", d:-10, r:"Следующий раз снова начнётся с мамы."},
+     {t:"«Не знаю, но давайте попробуем»", d:-5, r:"Честно. Но вы обе слышите: дальше придётся идти наугад."}]}
+  ],
+  outro:"Вечер. Вы записываете заметки по встрече и ловите себя на мысли: за семь встреч самое сильное случилось за пять минут без слов.\n\nА вы не знаете, что с этим делать."
+},
+energy:{ name:"Поток пошёл", who:"Ирина",
+  intro:"Суббота. Ирина, 52 года, пришла по сарафану: подруга сказала ей «там что-то невероятное».\n\nИрина садится и скрещивает руки:\n«Я, честно, в это всё не очень верю».",
+  moves:[
+   {q:"Скепсис прямо в позе: руки скрещены, спина не касается спинки стула.\nЧто делаете?", o:[
+     {t:"Начинаю рассказывать, как работает энергия", d:-15, r:"Ирина вежливо кивает. Руки скрещены ещё крепче.", c:"Слова, которые отталкивают скептиков"},
+     {t:g("Сразу приступаю к работе, как {привыкла|привык}"), d:-5, r:"Вы входите в поток. Но Ирина сидит, как на приёме у врача, — и проверяет вас."},
+     {t:"«Верить не нужно. Просто замечайте, что чувствуете»", d:5, r:"Ирина хмыкает, но руки опускаются на колени."}]},
+   {q:"Вы ведёте руками над её плечами. И вдруг — пошло. Руки сами знают куда.\n\nИрина глубоко вздыхает, по щеке катится слеза:\n«Как будто груз сняли…»", o:[
+     {t:"Начинаю специально «усиливать» поток", d:-15, r:"Чем сильнее давите, тем тише. Поток уходит, как вода сквозь пальцы.", c:"Поток не слушается"},
+     {t:"Иду туда, куда ведут руки, не думая", d:5, r:"Поток ведёт. Ирина тихо плачет. Хорошо — но вы не знаете, куда именно он ведёт."},
+     {t:"Спрашиваю: «Где сейчас тепло? Где отпускает?» — и слежу за ответами", d:10, r:"Ирина описывает, и вы видите, как меняется её дыхание. Впервые вы не просто в потоке — вы видите, что он делает."}]},
+   {climax:true, q:"Ирина начинает раскачиваться. Сначала чуть-чуть, потом сильнее. Руки поднимаются сами.\n\nОна открывает глаза: «Это вы делаете? Или я? Мне страшно!»", o:[
+     {t:"«Это энергия выходит, не мешайте ей»", d:-15, r:"Ирина слышит: «она сама не знает, что происходит». И сжимается.", c:"Ирина испугалась"},
+     {t:"Резко прекращаю работу", d:-20, r:"Раскачивание обрывается. Ирина сидит растерянная, как после прерванного сна.", c:"Оборвали на самом важном"},
+     {t:"Держу руки и молчу", d:-15, r:"Вы надеетесь, что поток сам знает, что делает. Ирина в этом не уверена."}]},
+   {q:"В конце Ирина говорит:\n«Ну… что-то в этом есть. А что это было? И сколько стоит, если приходить ещё?»", o:[
+     {t:"«Словами не объяснишь, это надо почувствовать»", d:-15, r:"Дома Ирина скажет подруге: «Что-то было, но она сама не знает что».", c:"Сарафан закрылся"},
+     {t:"Называю цену за курс из пяти сеансов", d:-20, r:"«Я подумаю». Вы знаете, что значит это «подумаю».", c:"Услышала цену — ушла думать"},
+     {t:"«Приходите, когда захочется»", d:-10, r:"Тепло, но без следующего шага. Захочется ей нескоро."}]}
+  ],
+  outro:"Вечером вы прокручиваете сеанс. Поток был — и снова сам по себе.\n\nВы не можете ни повторить его, ни объяснить. А чтобы платить, людям нужно понимать, за что."
+},
+start:{ name:"Подруга на кухне", who:"Лена",
+  intro:"Пятница, вечер. Подруга Лена сидит у вас на кухне и держится за поясницу:\n«Ты же вечно читаешь про тело. Сделай что-нибудь, а?»\n\nВы смеётесь: «Я же не специалист». Но кладёте ладони ей на спину.",
+  moves:[
+   {q:"Под ладонями напряжённая спина. Лена ждёт.\nЧто делаете?", o:[
+     {t:g("Начинаю растирать, как {видела|видел} в видео"), d:-10, r:g("Лена терпеливо ждёт. Вы чувствуете себя {самозванкой|самозванцем}."), c:"«Я же не специалист»"},
+     {t:"Держу руки и жду — вдруг что-то почувствую", d:-5, r:"Тишина. Секунда, две, десять. Лена: «Ну что там?»"},
+     {t:"Прошу её закрыть глаза и подышать", d:5, r:"Лена послушно дышит. И вы вдруг замечаете, как спина под ладонями чуть мягчеет."}]},
+   {q:"И вдруг — тепло. Не ваше. Или ваше? Ладони горят.\n\nЛена: «Ой… вот сейчас было очень хорошо. Сделай так ещё».", o:[
+     {t:"Пытаюсь повторить и стараюсь изо всех сил", d:-15, r:"Чем сильнее стараетесь, тем холоднее руки. Тепло ушло.", c:"Не повторилось"},
+     {t:"Убираю руки: страшно, вдруг сделаю хуже", d:-10, r:"Лена разочарованно выпрямляется."},
+     {t:"Не стараюсь, просто смотрю, как она дышит", d:10, r:"Тепло возвращается. Лена затихает. А вам почему-то хочется плакать."}]},
+   {climax:true, q:"Спина Лены начинает мелко дрожать. Потом дрожь уходит в руки.\n\nОна хватается за край стола: «Ой. Это что? Это ты делаешь?»", o:[
+     {t:"Отдёргиваю руки", d:-20, r:"Дрожь стихает. Вы обе нервно смеётесь. Этот момент вы ещё неделю будете прокручивать.", c:"Испугались того, что тянет"},
+     {t:"«Наверное, это просто нервы»", d:-15, r:"Лена кивает, но смотрит на вас иначе."},
+     {t:"Держу руки и не знаю, что делать дальше", d:-15, r:"Секунды тянутся. Лена смотрит на вас — и видит, что вы не знаете.", c:"Растерялись"}]},
+   {q:"Лена потягивается:\n«Слушай, а спине правда легче! Посмотришь мою маму? У неё плечи совсем каменные».", o:[
+     {t:"«Нет, ты что, я не умею»", d:-20, r:"Лена пожимает плечами. А вы ещё год будете думать: а если бы?", c:"Ещё год откладывания"},
+     {t:"«Может быть… когда-нибудь»", d:-10, r:"«Когда-нибудь» — это никогда, и вы обе это знаете."},
+     {t:"«Давай попробуем, но я не знаю, что делаю»", d:-10, r:"Смело. Но страх навредить чужой маме не отпускает всю неделю.", c:"Страх навредить"}]}
+  ],
+  outro:"Лена ушла. Вы моете чашки и смотрите на свои ладони. Тепло было. Тяга есть уже несколько лет.\n\nНе хватает одного — понимания, что с этим делать."
+}};
+
+/* ===================== ВОПРОСЫ И ТИПЫ ===================== */
+const PRE = [
+ {q:"Когда рядом человек, которому плохо, вы первым делом…", a:[
+   ["делаю что-то руками","sila"],[g("прислушиваюсь, что чувствую {сама|сам}"),"chut"],["пытаюсь понять причину","kont"],["чувствую его состояние как своё","serd"],["настраиваюсь, будто подключаюсь","pot"]]},
+ {q:"После дня, когда вы много отдавали людям, вы…", a:[
+   ["гудит тело, будто разгружали вагоны","sila"],["как оголённый провод","chut"],[g("прокручиваю, что {сделала|сделал} не так"),"kont"],["долго «снимаю» с себя чужое","serd"],[g("пусто, будто всё из себя {вылила|вылил}"),"pot"]]},
+ {q:"Какая фраза про вас?", a:[
+   [g("«Лучше сделаю {сама|сам} и как следует»"),"sila"],["«Я многое чувствую, но не могу объяснить»","chut"],["«Пока не пойму, как это работает, не начну»","kont"],["«Мне не всё равно, и это выматывает»","serd"],["«Иногда идёт само, и я не знаю откуда»","pot"]]}
+];
+const POST = [
+ {q:"В этой партии вам было труднее всего…", w:2, a:[
+   ["не знать, что делать руками","sila"],["не понимать, что я чувствую","chut"],["отпустить и не вмешиваться","kont"],["не взять его состояние на себя","serd"],["удержать то, что пошло","pot"]]},
+ {q:"Что честнее всего останавливает вас помогать людям глубже?", key:"obj", a:[
+   ["«Я мало чувствую»","low"],["«У меня нет системы, всё наугад»","sys"],["«Боюсь навредить»","harm"],["«Не на ком практиковаться»","models"],[g("«Не {уверена|уверен}, что это для меня»"),"me"]]},
+ {q:"Чего вы хотите больше всего через полгода?", key:"goal", a:[
+   ["Работать глубже, чтобы результат держался","deep"],["Работать легче и не выгорать","easy"],["Понимать, что делаю, и повторять результат","repeat"],["Начать помогать людям и брать за это деньги","begin"],["Выйти на новый доход и поднять чек","money"]]}
+];
+const TYPES = {
+ sila:{name:"Сила", nick:"Руки-труженики", entry:"мышечную нагрузку",
+   hit:"Вы привыкли брать старанием: глубже, дольше, сильнее. И часто это работает — ценой ваших рук, спины и сил.",
+   loss:"Когда тело закрывается, вы добавляете усилия. А тело в ответ закрывается ещё сильнее. Отсюда усталость к вечеру и результат, который не держится.",
+   good:"Ваш вход в энерговолну — через мышечную нагрузку. Тело само запускает волну, когда ему дают правильное напряжение и отпускание. Работать при этом приходится меньше, а не больше.",
+   web:"Как запускать волну через нагрузку — и не тратить на это свои силы"},
+ chut:{name:"Чуткость", nick:"Слушающий тишину", entry:"чувствительность",
+   hit:"Вы чувствуете больше, чем умеете объяснить. И поэтому падаете в сомнения в те дни, когда руки молчат.",
+   loss:"Вы ждёте отклика, чтобы начать. Нет отклика — нет уверенности, и вы решаете: «наверное, это не моё».",
+   good:"Ваш вход — через чувствительность. Но её развивают, а работать с человеком можно начать ещё до того, как ощущения станут яркими.",
+   web:"На что опираться, когда собственные ощущения слабые"},
+ kont:{name:"Контроль", nick:"Инженер", entry:"снижение лишнего контроля",
+   hit:"Вам важно понимать, что происходит и почему. Без этого вы не начинаете.",
+   loss:"Когда тело идёт не по плану, вы замираете или пытаетесь вернуть всё под контроль. А тело как раз в этот момент открывалось.",
+   good:"Ваш вход — через снижение лишнего контроля. Это не «отпустить всё», а понятная последовательность: что делает мастер, когда тело начинает отвечать.",
+   web:"Что делать, когда тело начинает двигаться само — по шагам"},
+ serd:{name:"Сердце", nick:"Эмпат", entry:"эмоции",
+   hit:"Вы чувствуете человека как себя. Это ваш дар — и ваша усталость.",
+   loss:"Вы забираете чужое состояние, а потом долго «снимаете» его с себя. Отдаёте больше, чем восстанавливаетесь.",
+   good:"Ваш вход — через эмоции. Ваша чуткость к состоянию человека — готовая точка входа в волну. Нужно научиться вести процесс, а не впитывать его.",
+   web:"Как работать через эмоции и не забирать чужое себе"},
+ pot:{name:"Поток", nick:"Проводник без карты", entry:"энергетические техники",
+   hit:"Иногда у вас идёт само — сильно, по-настоящему. И вы не знаете, откуда это и как вернуть.",
+   loss:"Поток не слушается: сегодня есть, завтра нет. Объяснить его человеку вы не можете — значит, и назвать цену трудно.",
+   good:"Ваш вход — через энергетические техники, но с картой. Когда понятно, что вы делаете, волна начинает включаться по вашему решению.",
+   web:"Как сделать так, чтобы волна включалась не случайно"}
+};
+const OBJ = {
+ low:"Вы считаете, что чувствуете мало. На эфире Егор покажет, почему для старта это не главное.",
+ sys:"Вам не хватает системы. На эфире — пять входов в волну и как найти свой.",
+ harm:"Вы боитесь навредить. На эфире — что делает мастер в ту секунду, когда тело начинает отвечать.",
+ models:"Вам не на ком практиковаться. На эфире — где берут первых моделей.",
+ me:"Вы не уверены, что это для вас. На эфире — истории людей, которые начинали с того же сомнения."
+};
+const GOALS = {deep:"работать глубже, чтобы результат держался", easy:"работать легче и не выгорать", repeat:"понимать, что делаете, и повторять результат", begin:"начать помогать людям и брать за это деньги", money:"выйти на новый доход и поднять чек"};
+
+/* ===================== СОСТОЯНИЕ ===================== */
+const KEY = "telo_hod_v1";
+const fresh = () => ({step:"cover", seg:SEG_ALIAS[(QS.get("seg")||"").toLowerCase()]||null, pre:[], post:[], obj:null, goal:null,
+  move:0, phase:"play", trust:100, cards:[], log:[], order:{}, slot:null, sound:false});
+let S = fresh();
+try{ const raw = localStorage.getItem(KEY); if(raw){ S = Object.assign(fresh(), JSON.parse(raw)); } }catch(e){}
+const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} };
+const shuffle = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
+function orderFor(key, n){ if(!S.order[key]){ S.order[key] = shuffle([...Array(n).keys()]); save(); } return S.order[key]; }
+
+/* ===================== ЗВУК ===================== */
+let AC = null;
+function ac(){ if(!AC){ try{ AC = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } return AC; }
+function tone(freq, dur, type="sine", vol=.08, when=0){
+  if(!S.sound || !ac()) return;
+  const t = AC.currentTime + when, o = AC.createOscillator(), gn = AC.createGain();
+  o.type = type; o.frequency.value = freq; gn.gain.setValueAtTime(vol, t); gn.gain.exponentialRampToValueAtTime(.0001, t+dur);
+  o.connect(gn).connect(AC.destination); o.start(t); o.stop(t+dur);
+}
+const tick = () => tone(1800, .03, "square", .03);
+const beat = () => { tone(60, .18, "sine", .35); tone(55, .2, "sine", .3, .22); };
+const lossSnd = () => { tone(220, .25, "triangle", .08); tone(165, .35, "triangle", .07, .12); };
+const gainSnd = () => { tone(523, .18, "sine", .07); tone(784, .3, "sine", .06, .1); };
+
+/* ===================== УТИЛИТЫ ===================== */
+const app = document.getElementById("app");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const H = html => { app.innerHTML = html; app.classList.remove("fade"); void app.offsetWidth; app.classList.add("fade"); window.scrollTo({top:0}); };
+let timers = [];
+const clearTimers = () => { timers.forEach(t => { clearTimeout(t); clearInterval(t); }); timers = []; };
+const later = (fn, ms) => { const t = setTimeout(fn, ms); timers.push(t); return t; };
+function track(ev, extra){ if(!CONFIG.trackUrl) return; try{ fetch(CONFIG.trackUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(Object.assign({ev, seg:S.seg, t:Date.now()}, extra||{})),keepalive:true}).catch(()=>{}); }catch(e){} }
+function toast(html){ const t = document.getElementById("toast"); t.innerHTML = html; t.classList.add("on"); setTimeout(()=>t.classList.remove("on"), 2600); }
+function flash(kind){ document.body.classList.remove("flash-loss","flash-gain"); void document.body.offsetWidth; document.body.classList.add(kind==="loss"?"flash-loss":"flash-gain"); setTimeout(()=>document.body.classList.remove("flash-loss","flash-gain"), 750); }
+function setDark(on){ document.body.classList.toggle("dark", !!on); }
+function setPulse(on){ document.body.classList.toggle("pulse", !!on); }
+
+function typeText(el, text, cb){
+  let i = 0, done = false;
+  el.classList.add("caret");
+  const finish = () => { if(done) return; done = true; el.textContent = text; el.classList.remove("caret"); el.onclick = null; cb && cb(); };
+  el.onclick = finish;
+  const step = () => { if(done) return; i += 2; el.textContent = text.slice(0, i); if(i >= text.length) finish(); else later(step, 22); };
+  step();
+}
+function animateNum(el, from, to, ms=900){
+  const start = performance.now(); el.classList.remove("up","down"); if(to<from) el.classList.add("down"); if(to>from) el.classList.add("up");
+  const f = now => { const p = Math.min(1,(now-start)/ms), v = Math.round(from + (to-from)*(1-Math.pow(1-p,3))); el.textContent = v; if(p<1) requestAnimationFrame(f); else setTimeout(()=>el.classList.remove("up","down"), 600); };
+  requestAnimationFrame(f);
+}
+const topbar = (dark) => `<div class="top"><div class="brand"><img src="${SPIRAL}" alt="">Школа Егора Надымова</div><div class="sp"></div><button class="snd" id="snd">${S.sound?"Звук: вкл":"Звук: выкл"}</button></div>`;
+function bindSound(){ const b = document.getElementById("snd"); if(!b) return; b.onclick = () => { S.sound = !S.sound; save(); if(S.sound) ac() && AC.resume && AC.resume(); b.textContent = S.sound?"Звук: вкл":"Звук: выкл"; }; }
+const egorPh = () => CONFIG.egorPhoto ? `<div class="ph"><img src="${esc(CONFIG.egorPhoto)}" alt="Егор Надымов"></div>` : `<div class="ph">ЕН</div>`;
+
+/* ===================== ЭКРАНЫ ===================== */
+function render(){
+  clearTimers(); setPulse(false);
+  const st = S.step;
+  if(st==="cover") return cover();
+  if(st==="seg") return segScreen();
+  if(st.startsWith("pre")) return question(PRE, +st.slice(3), "pre");
+  if(st==="ready") return ready();
+  if(st==="intro") return intro();
+  if(st==="move") return move();
+  if(st==="outro") return outro();
+  if(st==="final") return finalScreen();
+  if(st.startsWith("post")) return question(POST, +st.slice(4), "post");
+  if(st==="result") return result();
+  if(st==="done") return done();
+}
+function go(step){ S.step = step; save(); render(); }
+
+function cover(){
+  setDark(false);
+  H(`${topbar()}
+  <div class="coverhud">
+    <div class="mini"><div class="n">100</div><div class="t">очков доверия</div></div>
+    <div class="mini clk"><div class="n">0:20</div><div class="t">на каждый ход</div></div>
+    <div class="mini"><div class="n">4</div><div class="t">хода</div></div>
+  </div>
+  <h1>Тело сделало ход.<br>Теперь ваш</h1>
+  <p class="lead">Одна сессия, четыре хода. На каждый — 20 секунд. У вас 100 очков доверия, и каждое решение чего-то стоит. Посмотрим, сколько останется у вас — и что на самом деле мешает вам помогать другим людям снимать зажимы и блоки.</p>
+  <div class="chips"><span class="chip"><b>5</b> минут</span><span class="chip">назад нельзя</span><span class="chip">лучше со звуком</span></div>
+  <div class="egor">${egorPh()}<div><p>«Я семь лет проигрывал эту партию на одном и том же ходе. Посмотрим, где ваш».</p><small>Егор Надымов, автор метода «ВитаВолна»</small></div></div>
+  <button class="btn" id="go">Начать партию</button>
+  <p class="disc">Это игра-симуляция, не медицинская диагностика. Прогресс сохраняется в этом браузере.</p>`);
+  bindSound();
+  document.getElementById("go").onclick = () => { track("start"); go("seg"); };
+}
+
+function segScreen(){
+  setDark(false);
+  H(`${topbar()}
+  <p class="moveinfo">Подготовка к партии</p>
+  <h2>За каким столом вы играете?</h2>
+  <p class="lead">От этого зависит, кто окажется перед вами.</p>
+  <div class="opts">${SEGS.map(s=>`<button class="opt${S.seg===s.id?" preset":""}" data-id="${s.id}">${esc(s.t)}<span class="sub">${esc(s.s)}</span></button>`).join("")}</div>`);
+  bindSound();
+  app.querySelectorAll(".opt").forEach(b => b.onclick = () => { S.seg = b.dataset.id; track("seg",{v:S.seg}); go("pre0"); });
+}
+
+function question(list, i, kind){
+  setDark(kind==="post");
+  const Q = list[i], ord = orderFor(kind+i, Q.a.length), total = list.length;
+  const label = kind==="pre" ? `Подготовка к партии · ${i+1} из ${total}` : `Разбор партии · ${i+1} из ${total}`;
+  H(`${topbar()}
+  <div class="prog">${list.map((_,k)=>`<i class="${k<=i?"on":""}"></i>`).join("")}</div>
+  <p class="moveinfo">${label}</p>
+  <h2>${esc(Q.q)}</h2>
+  <div class="opts">${ord.map(k=>`<button class="opt" data-k="${k}">${esc(Q.a[k][0])}</button>`).join("")}</div>`);
+  bindSound();
+  app.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+    const k = +b.dataset.k, v = Q.a[k][1];
+    b.classList.add("sel");
+    if(kind==="pre") S.pre[i] = v; else { S.post[i] = v; if(Q.key==="obj") S.obj = v; if(Q.key==="goal") S.goal = v; }
+    save();
+    setTimeout(() => {
+      if(kind==="pre") go(i+1<total ? "pre"+(i+1) : "ready");
+      else go(i+1<total ? "post"+(i+1) : "result");
+    }, 220);
+  });
+}
+
+function ready(){
+  setDark(true);
+  H(`${topbar()}
+  <p class="moveinfo">Фигуры расставлены</p>
+  <h2>Дальше часы идут по-настоящему</h2>
+  <p class="lead" style="color:rgba(244,236,250,.8)">20 секунд на ход. Не успели — тело почувствует вашу растерянность. Как и на настоящей сессии.<br><br>Свет приглушён. Перед вами человек.</p>
+  <button class="btn" id="go">Первый ход</button>`);
+  bindSound();
+  document.getElementById("go").onclick = () => { ac(); S.move = 0; S.phase="play"; S.trust = 100; S.cards = []; S.log = []; track("game_start"); go("intro"); };
+}
+
+function hud(showClock){
+  return `<div class="hud">
+    <div class="trust"><div style="flex:1"><div class="lbl">Доверие тела</div><div class="bar"><i id="bar" style="width:${Math.max(0,S.trust)}%"></i></div></div><div class="num" id="num">${S.trust}</div></div>
+    ${showClock?`<div class="clock idle" id="clock"><svg viewBox="0 0 58 58"><circle class="bg" cx="29" cy="29" r="25"/><circle class="fg" id="arc" cx="29" cy="29" r="25" stroke-dasharray="157" stroke-dashoffset="0"/></svg><span id="sec">20</span></div>`:""}
+  </div>`;
+}
+const lostRow = () => `<div class="lost"><div class="stack">${S.cards.slice(-3).map(()=>"<i></i>").join("")}</div>Потеряно: <b style="color:var(--loss)">${S.cards.length}</b></div>`;
+
+function intro(){
+  setDark(true);
+  const sc = SCENES[S.seg];
+  H(`${topbar()}${hud(false)}
+  <p class="moveinfo">Сцена · ${esc(sc.name)}</p>
+  <div class="scene" id="txt"></div>
+  <p class="hint" id="hint">Нажмите на текст, чтобы не ждать печати</p>
+  <div id="after"></div>
+  ${lostRow()}`);
+  bindSound();
+  typeText(document.getElementById("txt"), sc.intro, () => {
+    document.getElementById("hint").style.display = "none";
+    document.getElementById("after").innerHTML = `<button class="btn" id="go">Сесть рядом</button>`;
+    document.getElementById("go").onclick = () => go("move");
+  });
+}
+
+function move(){
+  setDark(true);
+  const sc = SCENES[S.seg], M = sc.moves[S.move], ord = orderFor("m"+S.seg+S.move, M.o.length);
+  H(`${topbar()}${hud(true)}
+  <p class="moveinfo">Ход ${S.move+1} из 4${M.climax?" · кульминация":""}</p>
+  <div class="scene" id="txt"></div>
+  <p class="hint" id="hint">Нажмите на текст, чтобы не ждать печати</p>
+  <div class="opts" id="opts"></div>
+  <div id="after"></div>
+  ${lostRow()}`);
+  bindSound();
+  if(M.climax){ setPulse(true); beat(); const hb = setInterval(beat, 1100); timers.push(hb); }
+  typeText(document.getElementById("txt"), M.q, () => {
+    document.getElementById("hint").style.display = "none";
+    const box = document.getElementById("opts");
+    box.innerHTML = ord.map(k=>`<button class="opt" data-k="${k}">${esc(M.o[k].t)}</button>`).join("");
+    let left = 20, answered = false;
+    const clock = document.getElementById("clock"), arc = document.getElementById("arc"), sec = document.getElementById("sec");
+    clock.classList.remove("idle");
+    const iv = setInterval(() => {
+      left--; sec.textContent = Math.max(0,left); arc.style.strokeDashoffset = String(157*(1-left/20));
+      if(left<=5){ clock.classList.add("warn"); tick(); }
+      if(left<=0){ clearInterval(iv); if(!answered){ answered = true; resolve(null); } }
+    }, 1000); timers.push(iv);
+    box.querySelectorAll(".opt").forEach(b => b.onclick = () => { if(answered) return; answered = true; clearInterval(iv); b.classList.add("sel"); box.querySelectorAll(".opt").forEach(x=>{ if(x!==b) x.classList.add("dim"); }); resolve(M.o[+b.dataset.k]); });
+  });
+
+  function resolve(opt){
+    const o = opt || TIMEOUT, from = S.trust;
+    S.trust = Math.max(0, Math.min(100, S.trust + o.d));
+    if(o.c) S.cards.push(o.c);
+    S.log.push({m:S.move, d:o.d, t:opt?opt.t:"timeout"});
+    save();
+    if(!opt) document.getElementById("opts").querySelectorAll(".opt").forEach(x=>x.classList.add("dim"));
+    animateNum(document.getElementById("num"), from, S.trust);
+    document.getElementById("bar").style.width = S.trust + "%";
+    if(o.d < 0){ flash("loss"); lossSnd(); } else { flash("gain"); gainSnd(); }
+    const box = document.getElementById("after");
+    box.innerHTML = `<div class="cons${o.d>0?" gain":""}" id="cons"><span class="delta ${o.d<0?"m":"p"}">${o.d>0?"+":""}${o.d}</span><span id="ctext"></span></div>`;
+    typeText(document.getElementById("ctext"), o.r, () => {
+      if(o.c) toast(`В копилку потерь: <b>«${esc(o.c)}»</b>`);
+      const last = S.move >= 3;
+      box.insertAdjacentHTML("beforeend", `<button class="btn" id="next">${last?"Чем всё закончилось":"Следующий ход"}</button>`);
+      document.getElementById("next").onclick = () => { if(last) go("outro"); else { S.move++; save(); go("move"); } };
+    });
+  }
+}
+
+function outro(){
+  setDark(true);
+  const sc = SCENES[S.seg];
+  H(`${topbar()}${hud(false)}
+  <p class="moveinfo">После сессии</p>
+  <div class="scene" id="txt"></div>
+  <div id="after"></div>
+  ${lostRow()}`);
+  bindSound();
+  typeText(document.getElementById("txt"), sc.outro, () => {
+    document.getElementById("after").innerHTML = `<button class="btn" id="go">Посмотреть счёт партии</button>`;
+    document.getElementById("go").onclick = () => { track("game_end",{score:S.trust}); go("final"); };
+  });
+}
+
+function outcome(score){
+  if(score >= 75) return {k:"Почти победа", t:"Тело вам поверило. Но честно: вы знаете почему? Завтра, с другим человеком, вы повторите эту партию?"};
+  if(score >= 50) return {k:"Пат", t:"Никто не выиграл. Тело приоткрылось — и закрылось ровно в тот момент, когда вы не знали, что делать."};
+  return {k:"Тело закрылось", t:"Не потому, что вы мало чувствуете. А потому, что в главный момент у вас не было хода."};
+}
+function finalScreen(){
+  setDark(true);
+  const oc = outcome(S.trust), cards = S.cards.slice(-3);
+  H(`<div class="final">${topbar()}
+  <p class="moveinfo">Счёт партии</p>
+  <div class="big" id="big">100</div>
+  <div class="of">из 100 очков доверия</div>
+  <div class="outcome">${esc(oc.k)}</div>
+  <p class="lead" style="color:rgba(244,236,250,.85)">${esc(oc.t)}</p>
+  ${cards.length?`<div class="cards">${cards.map(c=>`<div class="card"><small>Потеряно</small>${esc(c)}</div>`).join("")}</div>`:""}
+  <div class="quote">${egorPh()}<div><p>«Я семь лет проигрывал именно на третьем ходе. Однажды почувствовал волну — и годами не мог её повторить. И не знал, что делать, когда тело человека начинало отвечать. Что в итоге помогло, расскажу на эфире».</p><small>Егор Надымов</small></div></div>
+  <button class="btn" id="go">Разобрать мою партию</button>
+  <p class="small" style="text-align:center;margin-top:10px;color:rgba(244,236,250,.5)">Ещё 3 вопроса — и разбор</p></div>`);
+  bindSound();
+  animateNum(document.getElementById("big"), 100, S.trust, 1400);
+  app.querySelectorAll(".card").forEach((c,i)=> later(()=>{ c.classList.add("on"); lossSnd(); }, 1500 + i*600));
+  document.getElementById("go").onclick = () => go("post0");
+}
+
+function calcType(){
+  const sc = {sila:0,chut:0,kont:0,serd:0,pot:0};
+  S.pre.forEach(v => { if(sc[v]!==undefined) sc[v]++; });
+  const p4 = S.post[0]; if(sc[p4]!==undefined) sc[p4] += 2;
+  return Object.keys(sc).sort((a,b) => sc[b]-sc[a] || (b===p4) - (a===p4))[0];
+}
+
+function mskNow(){ const d = new Date(Date.now() + 3*3600e3); return {y:d.getUTCFullYear(), m:d.getUTCMonth(), d:d.getUTCDate(), wd:d.getUTCDay(), min:d.getUTCHours()*60+d.getUTCMinutes()}; }
+function slotOptions(){
+  const n = mskNow(), res = [], days = ["вс","пн","вт","ср","чт","пт","сб"], months = ["января","февраля","марта","апреля","мая","июня","июля","августа","сентября","октября","ноября","декабря"];
+  CONFIG.slots.forEach(h => { const diff = h*60 - n.min; if(diff >= 90 && diff <= 360) res.push({id:fmt(0,h), label:`Сегодня, ${h}:00`, sub:"через "+Math.round(diff/60)+" ч"}); });
+  const t = new Date(Date.UTC(n.y, n.m, n.d + 1));
+  CONFIG.slots.forEach(h => res.push({id:fmt(1,h), label:`Завтра, ${h}:00`, sub:`${days[t.getUTCDay()]}, ${t.getUTCDate()} ${months[t.getUTCMonth()]}`}));
+  return res;
+  function fmt(add,h){ const x = new Date(Date.UTC(n.y, n.m, n.d + add)); return `${x.getUTCFullYear()}${String(x.getUTCMonth()+1).padStart(2,"0")}${String(x.getUTCDate()).padStart(2,"0")}${h}`; }
+}
+
+function result(){
+  setDark(false);
+  const tk = calcType(), T = TYPES[tk]; S.type = tk; save();
+  const slots = slotOptions();
+  if(!S.slot || !slots.find(s=>s.id===S.slot)) S.slot = (slots.find(s=>s.label.startsWith("Завтра") && s.label.endsWith("19:00"))||slots[0]).id;
+  H(`<div class="res">${topbar()}
+  <p class="moveinfo">Разбор партии · ${S.trust} из 100</p>
+  <span class="type">Ваш тип — ${esc(T.name)} · «${esc(T.nick)}»</span>
+  <h2 style="margin-top:14px">${esc(T.hit)}</h2>
+  <div class="block"><h3>Где вы теряете доверие</h3><p>${esc(T.loss)}</p>${S.obj?`<p style="margin-top:10px">${esc(OBJ[S.obj])}</p>`:""}</div>
+  <div class="block good"><h3>Хорошая новость</h3><p>${esc(T.good)} И чтобы начать работать с другим человеком, не нужно сначала ярко чувствовать самому.</p></div>
+  ${S.goal?`<div class="block warm"><h3>Ваша цель</h3><p>Вы хотите ${esc(GOALS[S.goal])}. С этого и начнём.</p></div>`:""}
+
+  <div class="webinar">
+    <div class="k">Бесплатный эфир Егора Надымова</div>
+    <h2>${esc(WEBINAR)}</h2>
+    <p class="lead" style="font-size:15px">На эфире я покажу, что делать в ту самую секунду, когда тело человека начинает отвечать. И как начать через ваш вход — даже если сами вы пока чувствуете мало.</p>
+    <ul>
+      <li><b>Для вашего типа:</b> ${esc(T.web)}</li>
+      <li>Что замечать в дыхании, движениях и ответах человека, когда собственные ощущения слабые</li>
+      <li>Две практики прямо на эфире: короткая проба в середине и общая практика под моим ведением в конце</li>
+    </ul>
+    <div class="gifts">🎁 Участникам эфира — три медитации: «Трансформация», «Восстановление» и «Гармония в отношениях».</div>
+    <p class="moveinfo" style="margin-top:20px">Выберите время</p>
+    <div class="slots">${slots.map(s=>`<div class="slot${s.id===S.slot?" sel":""}" data-id="${s.id}"><div>${esc(s.label)}<br><small>${esc(s.sub)}</small></div><span class="dot"></span></div>`).join("")}</div>
+    <p class="moveinfo" style="margin-top:20px">Куда прислать ссылку и напоминание</p>
+    <div class="msgr">
+      <a class="tg" data-m="tg" target="_blank" rel="noopener" href="#">Telegram</a>
+      <a class="mx" data-m="max" target="_blank" rel="noopener" href="#">MAX</a>
+      <button class="mail" data-m="mail">Только на почту</button>
+    </div>
+    <p class="small" style="margin-top:12px">Эфир бесплатный. Ссылка с автовходом придёт в выбранный мессенджер или на почту.</p>
+  </div>
+  <p class="disc">Тест-игра помогает заметить, что мешает в работе с человеком. Это не медицинская диагностика и не обещание результата.</p></div>`);
+  bindSound();
+  track("result",{type:tk, score:S.trust, obj:S.obj});
+  app.querySelectorAll(".slot").forEach(el => el.onclick = () => { S.slot = el.dataset.id; save(); app.querySelectorAll(".slot").forEach(x=>x.classList.toggle("sel", x===el)); });
+  const setLinks = () => { const a = app.querySelector('.msgr [data-m=tg]'), b = app.querySelector('.msgr [data-m=max]'); a.href = CONFIG.telegram + encodeURIComponent(payload()); b.href = CONFIG.max + encodeURIComponent(payload()); };
+  setLinks();
+  app.querySelectorAll(".slot").forEach(el => el.addEventListener("click", setLinks));
+  app.querySelectorAll(".msgr [data-m]").forEach(b => b.onclick = () => register(b.dataset.m));
+}
+
+function payload(){ return `${S.seg}_${S.type}_${S.obj||"x"}_${S.slot}`; }
+function register(m){
+  const data = {email:QS.get("email")||"", name:QS.get("name")||"", seg:S.seg, type:S.type, obj:S.obj, goal:S.goal, score:S.trust, slot:S.slot, messenger:m, utm:QS.get("utm_campaign")||"", wave:QS.get("wave")||""};
+  if(CONFIG.registerUrl){ try{ fetch(CONFIG.registerUrl,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true}).catch(()=>{}); }catch(e){} }
+  track("register",{m, slot:S.slot});
+  S.msg = m; save();
+  setTimeout(() => go("done"), 150);
+}
+function done(){
+  setDark(false);
+  const s = slotOptions().find(x=>x.id===S.slot);
+  const where = S.msg==="mail" ? "на почту" : (S.msg==="max" ? "в MAX" : "в Telegram");
+  H(`${topbar()}
+  <h1 style="margin-top:30px">Вы в партии</h1>
+  <p class="lead">Эфир: <b>${esc(s?s.label:"завтра")}</b>${s?` (${esc(s.sub)})`:""}. Ссылку с автовходом и напоминание пришлём ${where}.</p>
+  ${S.msg!=="mail"?`<p class="lead">Если бот не открылся, нажмите ещё раз:</p><div class="msgr"><a class="${S.msg==="max"?"mx":"tg"}" target="_blank" rel="noopener" href="${(S.msg==="max"?CONFIG.max:CONFIG.telegram)+encodeURIComponent(payload())}">Открыть бота</a></div>`:""}
+  <div class="egor">${egorPh()}<div><p>«До встречи на эфире. Возьмите с собой ваш счёт — ${S.trust} из 100. Посмотрим, что с ним станет».</p><small>Егор Надымов</small></div></div>
+  <p class="disc">Прогресс сохранён в этом браузере.</p>`);
+  bindSound();
+}
+
+document.addEventListener('pointerdown', () => { if(S.sound && ac() && AC.state === 'suspended' && AC.resume) AC.resume(); }, true);
+render();
+</script>
+</body>
+</html>
