@@ -408,12 +408,18 @@ const OBJ = {
 const GOALS = {deep:"глубокого результата, который держится", easy:"работать легче и не выгорать", repeat:"понимать, что делаете, и повторять результат", begin:"начать помогать людям за деньги", money:"выйти на новый доход и поднять чек"};
 
 /* ===================== СОСТОЯНИЕ ===================== */
-const KEY = "telo_hod_v1";
+const KEY = "telo_hod_v2";
 const fresh = () => ({step:"cover", seg:SEG_ALIAS[(QS.get("seg")||"").toLowerCase()]||null, pre:[], post:[], obj:null, goal:null,
   move:0, phase:"play", trust:100, cards:[], log:[], order:{}, slot:null, sound:false});
 let S = fresh();
-try{ const raw = localStorage.getItem(KEY); if(raw){ S = Object.assign(fresh(), JSON.parse(raw)); } }catch(e){}
-const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} };
+try{
+  if(QS.has("reset")){ localStorage.removeItem(KEY); }
+  const raw = localStorage.getItem(KEY);
+  if(raw){ const old = JSON.parse(raw); if(old.ts && Date.now() - old.ts < 3*24*3600e3) S = Object.assign(fresh(), old); }
+  localStorage.removeItem("telo_hod_v1");
+}catch(e){}
+const save = () => { try{ S.ts = Date.now(); localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} };
+function restart(){ const snd = S.sound; S = fresh(); S.sound = snd; save(); setPulse(false); render(); }
 const shuffle = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; };
 function orderFor(key, n){ if(!S.order[key]){ S.order[key] = shuffle([...Array(n).keys()]); save(); } return S.order[key]; }
 
@@ -457,8 +463,8 @@ function animateNum(el, from, to, ms=900){
   const f = now => { const p = Math.min(1,(now-start)/ms), v = Math.round(from + (to-from)*(1-Math.pow(1-p,3))); el.textContent = v; if(p<1) requestAnimationFrame(f); else setTimeout(()=>el.classList.remove("up","down"), 600); };
   requestAnimationFrame(f);
 }
-const topbar = (dark) => `<div class="top"><div class="brand"><img src="${SPIRAL}" alt="">Школа Егора Надымова</div><div class="sp"></div><button class="snd" id="snd">${S.sound?"Звук: вкл":"Звук: выкл"}</button></div>`;
-function bindSound(){ const b = document.getElementById("snd"); if(!b) return; b.onclick = () => { S.sound = !S.sound; save(); if(S.sound) ac() && AC.resume && AC.resume(); b.textContent = S.sound?"Звук: вкл":"Звук: выкл"; }; }
+const topbar = (dark) => `<div class="top"><div class="brand"><img src="${SPIRAL}" alt="">Школа Егора Надымова</div><div class="sp"></div>${S.step!=="cover"?`<button class="snd" id="again">Заново</button>`:""}<button class="snd" id="snd">${S.sound?"Звук: вкл":"Звук: выкл"}</button></div>`;
+function bindSound(){ const r = document.getElementById("again"); if(r) r.onclick = restart; const b = document.getElementById("snd"); if(!b) return; b.onclick = () => { S.sound = !S.sound; save(); if(S.sound) ac() && AC.resume && AC.resume(); b.textContent = S.sound?"Звук: вкл":"Звук: выкл"; }; }
 const egorPh = () => CONFIG.egorPhoto ? `<div class="ph"><img src="${esc(CONFIG.egorPhoto)}" alt="Егор Надымов"></div>` : `<div class="ph">ЕН</div>`;
 
 /* ===================== ЭКРАНЫ ===================== */
