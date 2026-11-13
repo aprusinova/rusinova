@@ -187,7 +187,8 @@ body.dark .opt:hover{border-color:rgba(196,0,255,.6);background:rgba(155,44,255,
 .msgr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
 .msgr a,.msgr button{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px 10px;border-radius:14px;text-decoration:none;font:600 15px var(--f-body);color:#fff;border:0;cursor:pointer}
 .tg{background:#2AABEE}.mx{background:linear-gradient(135deg,#4B8BFF,#8E4BFF)}
-.mail{grid-column:1/-1;background:transparent!important;color:var(--plum)!important;border:1px solid var(--line)!important;font-weight:500!important}
+.vk{background:#0077FF;grid-column:1/-1}
+.msgr.one{grid-template-columns:1fr}
 .disc{font-size:11px;color:var(--muted);line-height:1.5;margin-top:22px;text-align:center}
 .eyebrow{display:inline-block;margin-top:14px;font:600 11px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--violet);padding:6px 11px;border-radius:99px;background:rgba(155,44,255,.08)}
 .hero{position:relative;margin:6px -20px 0;height:250px;overflow:hidden;display:flex;justify-content:center;align-items:flex-end}
@@ -239,6 +240,7 @@ body.dark .block.zone p{color:#F4ECFA}
 const CONFIG = {
   telegram: "https://t.me/YOUR_BOT?start=",   // ссылка на бот Telegram, в конец добавится метка
   max: "https://max.ru/YOUR_BOT?start=",       // ссылка на бот MAX
+  vk: "https://vk.me/YOUR_GROUP?ref=",         // ссылка на бот ВКонтакте (сообщения сообщества), метка уходит в ref
   registerUrl: "",   // адрес приёма регистрации (GetCourse / обработчик). Пусто = только переход в бот
   trackUrl: "",      // адрес для статистики (необязательно)
   slots: [15, 19],   // часы эфира по Москве
@@ -728,20 +730,21 @@ function result(){
     <div class="msgr">
       <a class="tg" data-m="tg" target="_blank" rel="noopener" href="#">Telegram</a>
       <a class="mx" data-m="max" target="_blank" rel="noopener" href="#">MAX</a>
-      <button class="mail" data-m="mail">Только на почту</button>
+      <a class="vk" data-m="vk" target="_blank" rel="noopener" href="#">ВКонтакте</a>
     </div>
-    <p class="small" style="margin-top:10px">Эфир бесплатный. Ссылка с автовходом придёт туда, что вы выбрали.</p>
+    <p class="small" style="margin-top:10px">Эфир бесплатный. Бот пришлёт ссылку с автовходом и напомнит перед началом.</p>
   </div>
   <p class="disc">Тест-игра помогает заметить, что мешает в работе с человеком. Это не медицинская диагностика и не обещание результата.</p></div>`);
   bindSound();
   track("result",{type:tk, score:S.trust, obj:S.obj});
   app.querySelectorAll(".slot").forEach(el => el.onclick = () => { S.slot = el.dataset.id; save(); app.querySelectorAll(".slot").forEach(x=>x.classList.toggle("sel", x===el)); });
-  const setLinks = () => { const a = app.querySelector('.msgr [data-m=tg]'), b = app.querySelector('.msgr [data-m=max]'); a.href = CONFIG.telegram + encodeURIComponent(payload()); b.href = CONFIG.max + encodeURIComponent(payload()); };
+  const setLinks = () => { ['tg','max','vk'].forEach(m => { const a = app.querySelector('.msgr [data-m='+m+']'); if(a) a.href = botUrl(m); }); };
   setLinks();
   app.querySelectorAll(".slot").forEach(el => el.addEventListener("click", setLinks));
   app.querySelectorAll(".msgr [data-m]").forEach(b => b.onclick = () => register(b.dataset.m));
 }
 
+function botUrl(m){ return (m==="max"?CONFIG.max:(m==="vk"?CONFIG.vk:CONFIG.telegram)) + encodeURIComponent(payload()); }
 function payload(){ return `${S.seg}_${S.type}_${S.obj||"x"}_z${S.zone!=null?S.zone:"x"}_${S.slot}`; }
 function register(m){
   const data = {email:QS.get("email")||"", name:QS.get("name")||"", seg:S.seg, type:S.type, obj:S.obj, zone:S.zone, goal:S.goal, score:S.trust, slot:S.slot, messenger:m, utm:QS.get("utm_campaign")||"", wave:QS.get("wave")||""};
@@ -753,11 +756,11 @@ function register(m){
 function done(){
   setDark(false);
   const s = slotOptions().find(x=>x.id===S.slot);
-  const where = S.msg==="mail" ? "на почту" : (S.msg==="max" ? "в MAX" : "в Telegram");
+  const where = S.msg==="vk" ? "во ВКонтакте" : (S.msg==="max" ? "в MAX" : "в Telegram");
   H(`${topbar()}
   <h1 style="margin-top:30px">Вы в игре — до встречи на эфире</h1>
   <p class="lead">Эфир: <b>${esc(s?s.label:"завтра")}</b>${s?` (${esc(s.sub)})`:""}. Ссылку с автовходом и напоминание пришлём ${where}.</p>
-  ${S.msg!=="mail"?`<p class="lead">Если бот не открылся, нажмите ещё раз:</p><div class="msgr"><a class="${S.msg==="max"?"mx":"tg"}" target="_blank" rel="noopener" href="${(S.msg==="max"?CONFIG.max:CONFIG.telegram)+encodeURIComponent(payload())}">Открыть бота</a></div>`:""}
+  <p class="lead">Если бот не открылся, нажмите ещё раз:</p><div class="msgr one"><a class="${S.msg==="max"?"mx":(S.msg==="vk"?"vk":"tg")}" target="_blank" rel="noopener" href="${botUrl(S.msg)}">Открыть бота</a></div>
   <div class="egor">${egorPh()}<div><p>«Возьмите с собой ваш счёт — ${S.trust} из 100. На эфире посмотрим, что с ним станет».</p><small>Егор Надымов</small></div></div>
   <p class="disc">Прогресс сохранён в этом браузере.</p>`);
   bindSound();
