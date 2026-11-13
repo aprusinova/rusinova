@@ -57,9 +57,10 @@ body.flash-gain::after{content:"";position:fixed;inset:0;pointer-events:none;z-i
 .top{display:flex;align-items:center;gap:10px;min-height:44px}
 .brand{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--plum);font-weight:500}
 body.dark .brand{color:rgba(244,236,250,.7)}
-.brand img{width:22px;height:22px}
+.brand{min-width:0}.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand img{width:22px;height:22px;flex:none}
 .top .sp{flex:1}
-.snd{border:1px solid var(--line);background:transparent;color:inherit;border-radius:99px;font:500 11px var(--f-body);padding:6px 10px;cursor:pointer}
+.snd{white-space:nowrap;flex:none;border:1px solid var(--line);background:transparent;color:inherit;border-radius:99px;font:500 11px var(--f-body);padding:6px 10px;cursor:pointer}
 body.dark .snd{border-color:var(--nightline)}
 
 /* HUD */
@@ -214,6 +215,16 @@ body.dark .block.zone{background:rgba(255,107,139,.1);border:1px solid rgba(255,
 body.dark .block.zone h3{color:var(--loss)}
 body.dark .block.zone p{color:#F4ECFA}
 .block.zone{border-left:3px solid var(--loss)}
+.sum{margin-top:16px;border-radius:var(--r);background:#fff;border:1px solid var(--line);overflow:hidden}
+.sum .row{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;border-top:1px solid var(--line)}
+.sum .row:first-child{border-top:0}
+.sum .row i{flex:none;width:10px;height:10px;border-radius:50%;margin-top:6px;font-style:normal}
+.sum .row.z i{background:var(--loss)}.sum .row.s i{background:var(--sky)}.sum .row.o i{background:#E5B970}
+.sum .row small{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.sum .row p{font-size:15px;line-height:1.4;color:var(--ink)}
+.sum .row p span{color:var(--loss);font-weight:600;white-space:nowrap}
+.slots.two{grid-template-columns:1fr 1fr}
+.slots.two .slot{padding:12px 12px;font-size:14px}
 .fade{animation:sc .5s ease}
 @keyframes sc{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 @media (min-width:600px){h1{font-size:46px}.wrap{padding-top:28px}}
@@ -374,7 +385,7 @@ const TYPES = {
    hit:"Вам важно понимать, что происходит и почему. Без этого вы не начинаете.",
    loss:"Когда тело идёт не по плану, вы замираете или пытаетесь вернуть всё под контроль. А тело как раз в этот момент открывалось.",
    good:"Ваш вход — через снижение лишнего контроля. Это не «отпустить всё», а понятная последовательность: что делает мастер, когда тело начинает отвечать.",
-   web:"Что делать, когда тело начинает двигаться само — по шагам"},
+   web:"Как перестать замирать и спокойно вести процесс"},
  serd:{name:"Сердце", nick:"Эмпат", entry:"эмоции",
    hit:"Вы чувствуете человека как себя. Это ваш дар — и ваша усталость.",
    loss:"Вы забираете чужое состояние, а потом долго «снимаете» его с себя. Отдаёте больше, чем восстанавливаетесь.",
@@ -405,6 +416,7 @@ const OBJ = {
  models:"Вам не на ком практиковаться. На эфире — где берут первых моделей.",
  me:"Вы не уверены, что это для вас. На эфире — истории людей, которые начинали с того же сомнения."
 };
+const OBJ_SHORT = {low:"кажется, что чувствуете мало", sys:"нет системы — всё наугад", harm:"страх навредить", models:"не на ком практиковаться", me:"сомнение, что это для вас"};
 const GOALS = {deep:"глубокого результата, который держится", easy:"работать легче и не выгорать", repeat:"понимать, что делаете, и повторять результат", begin:"начать помогать людям за деньги", money:"выйти на новый доход и поднять чек"};
 
 /* ===================== СОСТОЯНИЕ ===================== */
@@ -463,8 +475,8 @@ function animateNum(el, from, to, ms=900){
   const f = now => { const p = Math.min(1,(now-start)/ms), v = Math.round(from + (to-from)*(1-Math.pow(1-p,3))); el.textContent = v; if(p<1) requestAnimationFrame(f); else setTimeout(()=>el.classList.remove("up","down"), 600); };
   requestAnimationFrame(f);
 }
-const topbar = (dark) => `<div class="top"><div class="brand"><img src="${SPIRAL}" alt="">Школа Егора Надымова</div><div class="sp"></div>${S.step!=="cover"?`<button class="snd" id="again">Заново</button>`:""}<button class="snd" id="snd">${S.sound?"Звук: вкл":"Звук: выкл"}</button></div>`;
-function bindSound(){ const r = document.getElementById("again"); if(r) r.onclick = restart; const b = document.getElementById("snd"); if(!b) return; b.onclick = () => { S.sound = !S.sound; save(); if(S.sound) ac() && AC.resume && AC.resume(); b.textContent = S.sound?"Звук: вкл":"Звук: выкл"; }; }
+const topbar = (dark) => `<div class="top"><div class="brand"><img src="${SPIRAL}" alt=""><span>Школа Егора Надымова</span></div><div class="sp"></div>${S.step!=="cover"?`<button class="snd" id="again">Заново</button>`:""}<button class="snd" id="snd">${S.sound?"🔊 Звук":"🔇 Звук"}</button></div>`;
+function bindSound(){ const r = document.getElementById("again"); if(r) r.onclick = restart; const b = document.getElementById("snd"); if(!b) return; b.onclick = () => { S.sound = !S.sound; save(); if(S.sound) ac() && AC.resume && AC.resume(); b.textContent = S.sound?"🔊 Звук":"🔇 Звук"; }; }
 const egorPh = () => CONFIG.egorPhoto ? `<div class="ph"><img src="${esc(CONFIG.egorPhoto)}" alt="Егор Надымов"></div>` : `<div class="ph">ЕН</div>`;
 
 /* ===================== ЭКРАНЫ ===================== */
@@ -691,41 +703,38 @@ function result(){
   const slots = slotOptions();
   if(!S.slot || !slots.find(s=>s.id===S.slot)) S.slot = (slots.find(s=>s.label.startsWith("Завтра") && s.label.endsWith("19:00"))||slots[0]).id;
   H(`<div class="res">${topbar()}
-  <p class="moveinfo">Разбор игры · доверие ${S.trust} из 100</p>
+  <p class="moveinfo">Ваш разбор · доверие ${S.trust} из 100</p>
   <span class="type">Ваш тип — ${esc(T.name)} · «${esc(T.nick)}»</span>
-  <h2 style="margin-top:14px">${esc(T.hit)}</h2>
-  <button class="jump" id="jump">Записаться на эфир Егора ↓</button>
-  <div class="block zone"><h3>Ваша слабая зона</h3><p><b>${esc(wz.z.name)}</b> — ${esc(wz.z.d)}.${wz.lost?` Здесь вы потеряли больше всего доверия: ${wz.lost} очков.`:""}</p></div>
-  <div class="block"><h3>Почему так происходит</h3><p>${esc(T.loss)}</p></div>
-  <div class="block good"><h3>Ваша сильная сторона</h3><p>${esc(T.good)} И чтобы начать работать с другим человеком, не нужно сначала ярко чувствовать самому.</p></div>
-  ${S.obj?`<div class="block warm"><h3>Что вам мешает</h3><p>${esc(OBJ[S.obj])}</p>${S.goal?`<p style="margin-top:10px">А хотите вы ${esc(GOALS[S.goal])}. С этого и начнём.</p>`:""}</div>`:""}
+  <h2 style="margin-top:12px">${esc(T.hit)}</h2>
+  <div class="sum">
+    <div class="row z"><i></i><div><small>Слабая зона</small><p>${esc(wz.z.name)}${wz.lost?` <span>−${wz.lost}</span>`:""}</p></div></div>
+    <div class="row s"><i></i><div><small>Сильная сторона</small><p>Ваш вход в энерговолну — через ${esc(T.entry)}</p></div></div>
+    ${S.obj?`<div class="row o"><i></i><div><small>Что мешает</small><p>${esc(OBJ_SHORT[S.obj][0].toUpperCase()+OBJ_SHORT[S.obj].slice(1))}</p></div></div>`:""}
+  </div>
 
   <div class="webinar" id="web">
-    <div class="invite"><img src="img/egor-invite.webp" alt="Егор Надымов"><p>«Приглашаю на эфир — покажу, что делать в этот момент»</p></div>
+    <div class="invite"><img src="img/egor-invite.webp" alt="Егор Надымов"><p>«Слабая зона закрывается не старанием, а системой. Приглашаю — покажу её на эфире»</p></div>
     <div class="k">Бесплатный эфир Егора Надымова</div>
     <h2>${esc(WEBINAR)}</h2>
-    <p class="lead" style="font-size:15px">Слабая зона, которую показала игра, закрывается не старанием, а системой. На эфире я покажу её на примере именно этого момента — и как начать через ваш вход, даже если сами вы пока чувствуете мало.</p>
     <ul>
-      <li><b>Для вашей слабой зоны:</b> ${esc(wz.z.web)}</li>
-      <li><b>Для вашего типа:</b> ${esc(T.web)}</li>
-      <li>Что замечать в дыхании, движениях и ответах человека, когда собственные ощущения слабые</li>
-      <li>Две практики прямо на эфире: короткая проба в середине и общая практика под моим ведением в конце</li>
+      <li>${esc(wz.z.web)}</li>
+      <li>${esc(T.web)}</li>
+      <li>Две практики прямо на эфире</li>
     </ul>
-    <div class="gifts">🎁 Участникам эфира — три медитации: «Трансформация», «Восстановление» и «Гармония в отношениях».</div>
-    <p class="moveinfo" style="margin-top:20px">Выберите время</p>
-    <div class="slots">${slots.map(s=>`<div class="slot${s.id===S.slot?" sel":""}" data-id="${s.id}"><div>${esc(s.label)}<br><small>${esc(s.sub)}</small></div><span class="dot"></span></div>`).join("")}</div>
-    <p class="moveinfo" style="margin-top:20px">Куда прислать ссылку и напоминание</p>
+    <div class="gifts">🎁 Участникам — три медитации: «Трансформация», «Восстановление», «Гармония в отношениях».</div>
+    <p class="moveinfo" style="margin-top:18px">Выберите время</p>
+    <div class="slots two">${slots.map(s=>`<div class="slot${s.id===S.slot?" sel":""}" data-id="${s.id}"><div>${esc(s.label)}<br><small>${esc(s.sub)}</small></div><span class="dot"></span></div>`).join("")}</div>
+    <p class="moveinfo" style="margin-top:18px">Куда прислать ссылку</p>
     <div class="msgr">
       <a class="tg" data-m="tg" target="_blank" rel="noopener" href="#">Telegram</a>
       <a class="mx" data-m="max" target="_blank" rel="noopener" href="#">MAX</a>
       <button class="mail" data-m="mail">Только на почту</button>
     </div>
-    <p class="small" style="margin-top:12px">Эфир бесплатный. Ссылка с автовходом придёт в выбранный мессенджер или на почту.</p>
+    <p class="small" style="margin-top:10px">Эфир бесплатный. Ссылка с автовходом придёт туда, что вы выбрали.</p>
   </div>
   <p class="disc">Тест-игра помогает заметить, что мешает в работе с человеком. Это не медицинская диагностика и не обещание результата.</p></div>`);
   bindSound();
   track("result",{type:tk, score:S.trust, obj:S.obj});
-  document.getElementById("jump").onclick = () => document.getElementById("web").scrollIntoView({behavior:"smooth"});
   app.querySelectorAll(".slot").forEach(el => el.onclick = () => { S.slot = el.dataset.id; save(); app.querySelectorAll(".slot").forEach(x=>x.classList.toggle("sel", x===el)); });
   const setLinks = () => { const a = app.querySelector('.msgr [data-m=tg]'), b = app.querySelector('.msgr [data-m=max]'); a.href = CONFIG.telegram + encodeURIComponent(payload()); b.href = CONFIG.max + encodeURIComponent(payload()); };
   setLinks();
